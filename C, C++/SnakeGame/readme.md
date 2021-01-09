@@ -14,7 +14,7 @@
 ## 😊 Introduction
 ### Intro Screen
 #### 뱀의 움직이는 에니메이션을 추가했고, 뱀이 벽에 부딪힐 때까지 시작을 안하면 게임을 종료한다.
-![Intro Screen1](/readme/intro1.png)![Intro Screen2](/readme/intro2.png)
+![Intro Screen1](./readme/intro1.png)![Intro Screen2](./readme/intro2.png)
 
 ### Play Screen
 ![Play Screen](./readme/play.png)
