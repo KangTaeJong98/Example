@@ -1,4 +1,4 @@
-# SnakeGame ##(C언어 과제)
+# SnakeGame (C언어 과제)
 
 ## ⚡ Features
 * 랭킹 시스템
