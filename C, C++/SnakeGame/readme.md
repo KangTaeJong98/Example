@@ -17,10 +17,10 @@
 ![Intro Screen1](/readme/intro1.png)![Intro Screen2](/readme/intro2.png)
 
 ### Play Screen
-![Play Screen](/readme/play.png)
+![Play Screen](./readme/play.png)
 
 ### Win Dialog
-![Win Dialog](/readme/win.png)
+![Win Dialog](./readme/win.png)
 
 ### Lose Dialog
-![Lose Dialog](/readme/lose.png)
+![Lose Dialog](./readme/lose.png)
