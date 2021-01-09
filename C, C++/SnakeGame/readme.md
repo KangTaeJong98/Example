@@ -1,5 +1,5 @@
 # SnakeGame ##(C언어 과제)
-***
+
 ## ⚡ Features
 * 랭킹 시스템
 - txt파일을 통해 3위까지 제공
