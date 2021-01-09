@@ -47,14 +47,14 @@ class ChatAdapter : BaseAdapter<Chat>(ChatDiffCallback()) {
         }
     }
 
-    class MyChatHolder(binding: HolderMyChatBinding) : BaseHolder<HolderMyChatBinding, Chat>(binding) {
+    private class MyChatHolder(binding: HolderMyChatBinding) : BaseHolder<HolderMyChatBinding, Chat>(binding) {
         override fun bind(element: Chat) {
             super.bind(element)
             binding.chat = element
         }
     }
 
-    class OtherChatHolder(binding: HolderOtherChatBinding) : BaseHolder<HolderOtherChatBinding, Chat>(binding) {
+    private class OtherChatHolder(binding: HolderOtherChatBinding) : BaseHolder<HolderOtherChatBinding, Chat>(binding) {
         override fun bind(element: Chat) {
             super.bind(element)
             binding.chat = element

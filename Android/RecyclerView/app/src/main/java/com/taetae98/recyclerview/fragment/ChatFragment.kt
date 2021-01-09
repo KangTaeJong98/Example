@@ -25,6 +25,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(R.layout.fragment_chat) {
 
     private fun initRecyclerView() {
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.setHasFixedSize(true)
     }
 
     private fun initSendButton() {
