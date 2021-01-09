@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="image"
+            type="com.taetae98.recyclerview.data.Image" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image"
+            android:src="@{image.image}" />
+    </androidx.cardview.widget.CardView>
+
+</layout>

@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/activity_main_navigation"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_navigation"
     app:startDestination="@id/chatFragment">
 
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.taetae98.recyclerview.fragment.ChatFragment"
-        android:label="ChatFragment" />
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat"/>
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.taetae98.recyclerview.fragment.GalleryFragment"
+        android:label="GalleryFragment"
+        tools:layout="@layout/fragment_gallery"/>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="com.taetae98.recyclerview.fragment.AlbumFragment"
+        android:label="AlbumFragment"
+        tools:layout="@layout/fragment_album">
+        <argument
+            android:name="album_name"
+            app:argType="string" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_albumFragment"
+        app:destination="@id/albumFragment" />
+
 </navigation>

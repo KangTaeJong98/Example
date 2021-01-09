@@ -1,6 +1,5 @@
 package com.taetae98.recyclerview.fragment
 
-import android.widget.TextView
 import com.taetae98.recyclerview.R
 import com.taetae98.recyclerview.adapter.ChatAdapter
 import com.taetae98.recyclerview.base.BaseFragment

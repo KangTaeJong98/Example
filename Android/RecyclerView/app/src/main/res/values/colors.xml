@@ -12,4 +12,6 @@
     <color name="chat_send_box">#FFFF33</color>
     <color name="chat_my">#FFFF33</color>
     <color name="chat_other">#FFFFFF</color>
+
+    <color name="gallery_background">#F0F0F0</color>
 </resources>

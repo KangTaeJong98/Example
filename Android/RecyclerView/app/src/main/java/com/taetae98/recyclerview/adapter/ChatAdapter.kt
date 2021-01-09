@@ -27,7 +27,7 @@ class ChatAdapter : BaseAdapter<Chat>(ChatDiffCallback()) {
                 OtherChatHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
             }
             else -> {
-                throw IllegalStateException("존재하지 않는 viewType : $viewType")
+                throw IllegalStateException("Illegal viewType : $viewType")
             }
         }
     }

@@ -3,4 +3,6 @@
     <string name="message">Message</string>
     <string name="send">Send</string>
     <string name="profile">Profile</string>
+    <string name="image">Image</string>
+    <string name="album">Album</string>
 </resources>

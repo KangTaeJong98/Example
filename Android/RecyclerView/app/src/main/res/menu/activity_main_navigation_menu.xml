@@ -4,4 +4,8 @@
     <item
         android:id="@+id/chatFragment"
         android:title="Chat" />
+
+    <item
+        android:id="@+id/galleryFragment"
+        android:title="Gallery" />
 </menu>
