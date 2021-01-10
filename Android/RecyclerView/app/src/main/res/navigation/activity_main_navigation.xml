@@ -27,5 +27,10 @@
     <action
         android:id="@+id/action_global_albumFragment"
         app:destination="@id/albumFragment" />
+    <fragment
+        android:id="@+id/toDoFragment"
+        android:name="com.taetae98.recyclerview.fragment.ToDoFragment"
+        tools:layout="@layout/fragment_todo"
+        android:label="ToDoFragment" />
 
 </navigation>

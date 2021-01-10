@@ -5,4 +5,9 @@
     <string name="profile">Profile</string>
     <string name="image">Image</string>
     <string name="album">Album</string>
+    <string name="todo">ToDo</string>
+    <string name="gallery">Gallery</string>
+    <string name="chat">Chat</string>
+    <string name="is_finished">isFinished</string>
+    <string name="refresh">Refresh</string>
 </resources>

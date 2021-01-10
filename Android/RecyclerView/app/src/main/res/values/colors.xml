@@ -14,4 +14,6 @@
     <color name="chat_other">#FFFFFF</color>
 
     <color name="gallery_background">#F0F0F0</color>
+
+    <color name="todo_background">#3C5899</color>
 </resources>
