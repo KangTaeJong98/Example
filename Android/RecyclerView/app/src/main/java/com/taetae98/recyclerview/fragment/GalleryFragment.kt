@@ -9,8 +9,8 @@ import com.taetae98.recyclerview.adapter.AlbumAdapter
 import com.taetae98.recyclerview.adapter.ImageAdapter
 import com.taetae98.recyclerview.base.BaseFragment
 import com.taetae98.recyclerview.databinding.FragmentGalleryBinding
-import com.taetae98.recyclerview.viewmodels.ImageViewModel
 import com.taetae98.recyclerview.toDp
+import com.taetae98.recyclerview.viewmodels.ImageViewModel
 
 @SuppressLint("UseCompatLoadingForDrawables")
 class GalleryFragment : BaseFragment<FragmentGalleryBinding>(R.layout.fragment_gallery) {
@@ -27,6 +27,7 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(R.layout.fragment_g
 
     private fun initRecyclerView() {
         binding.recyclerView.adapter = albumAdapter
+        binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.addItemDecoration(GridSpacingItemDecoration(3, 10.toDp()))
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
     }

@@ -1,6 +1,5 @@
 package com.taetae98.recyclerview.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -47,14 +46,14 @@ class ChatAdapter : BaseAdapter<Chat>(ChatDiffCallback()) {
         }
     }
 
-    private class MyChatHolder(binding: HolderMyChatBinding) : BaseHolder<HolderMyChatBinding, Chat>(binding) {
+    class MyChatHolder(binding: HolderMyChatBinding) : BaseHolder<HolderMyChatBinding, Chat>(binding) {
         override fun bind(element: Chat) {
             super.bind(element)
             binding.chat = element
         }
     }
 
-    private class OtherChatHolder(binding: HolderOtherChatBinding) : BaseHolder<HolderOtherChatBinding, Chat>(binding) {
+    class OtherChatHolder(binding: HolderOtherChatBinding) : BaseHolder<HolderOtherChatBinding, Chat>(binding) {
         override fun bind(element: Chat) {
             super.bind(element)
             binding.chat = element
