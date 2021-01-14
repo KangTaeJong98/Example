@@ -42,14 +42,20 @@ class SelectionAdapter : BaseAdapter<Selection>(SelectionItemCallback()) {
 
             itemView.isActivated = tracker?.isSelected(itemId) ?: false
         }
+    }
 
-        fun getItemDetails(): ItemDetailsLookup.ItemDetails<Long> = object : ItemDetailsLookup.ItemDetails<Long>() {
-            override fun getPosition(): Int {
-                return adapterPosition
-            }
+    class SelectionKeyProvider(private val recyclerView: RecyclerView) : ItemKeyProvider<Long>(SCOPE_MAPPED) {
+        override fun getKey(position: Int): Long {
+            val holder = recyclerView.findViewHolderForAdapterPosition(position)
+            return holder?.itemId ?: throw IllegalStateException("No Holder")
+        }
 
-            override fun getSelectionKey(): Long {
-                return itemId
+        override fun getPosition(key: Long): Int {
+            val holder = recyclerView.findViewHolderForItemId(key)
+            return if (holder is SelectionAdapter.SelectionHolder) {
+                holder.adapterPosition
+            } else {
+                RecyclerView.NO_POSITION
             }
         }
     }
@@ -60,7 +66,15 @@ class SelectionAdapter : BaseAdapter<Selection>(SelectionItemCallback()) {
 
             val holder = recyclerView.getChildViewHolder(view)
             return if (holder is SelectionHolder) {
-                holder.getItemDetails()
+                object : ItemDetails<Long>() {
+                    override fun getPosition(): Int {
+                        return holder.adapterPosition
+                    }
+
+                    override fun getSelectionKey(): Long {
+                        return holder.itemId
+                    }
+                }
             } else {
                 null
             }
@@ -83,22 +97,6 @@ class SelectionAdapter : BaseAdapter<Selection>(SelectionItemCallback()) {
 
         override fun canSelectMultiple(): Boolean {
             return true
-        }
-    }
-
-    class SelectionKeyProvider(private val recyclerView: RecyclerView) : ItemKeyProvider<Long>(SCOPE_MAPPED) {
-        override fun getKey(position: Int): Long {
-            val holder = recyclerView.findViewHolderForAdapterPosition(position)
-            return holder?.itemId ?: throw IllegalStateException("No Holder")
-        }
-
-        override fun getPosition(key: Long): Int {
-            val holder = recyclerView.findViewHolderForItemId(key)
-            return if (holder is SelectionAdapter.SelectionHolder) {
-                holder.adapterPosition
-            } else {
-                RecyclerView.NO_POSITION
-            }
         }
     }
 
