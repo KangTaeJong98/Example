@@ -16,4 +16,6 @@
     <color name="gallery_background">#F0F0F0</color>
 
     <color name="todo_background">#3C5899</color>
+
+    <color name="selection_background">#3C5899</color>
 </resources>

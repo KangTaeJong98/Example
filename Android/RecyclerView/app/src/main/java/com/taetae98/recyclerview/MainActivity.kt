@@ -1,8 +1,5 @@
 package com.taetae98.recyclerview
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -18,7 +15,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val appBarConfiguration by lazy {
         AppBarConfiguration(
-            setOf(R.id.chatFragment, R.id.galleryFragment),
+            setOf(
+                    R.id.chatFragment, R.id.galleryFragment,
+                    R.id.toDoFragment, R.id.selectionFragment
+            ),
             binding.drawer
         )
     }

@@ -32,5 +32,10 @@
         android:name="com.taetae98.recyclerview.fragment.ToDoFragment"
         tools:layout="@layout/fragment_todo"
         android:label="ToDoFragment" />
+    <fragment
+        android:id="@+id/selectionFragment"
+        android:name="com.taetae98.recyclerview.fragment.SelectionFragment"
+        tools:layout="@layout/fragment_selection"
+        android:label="SelectionFragment" />
 
 </navigation>
