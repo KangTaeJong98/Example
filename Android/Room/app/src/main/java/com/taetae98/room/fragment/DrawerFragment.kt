@@ -2,6 +2,9 @@ package com.taetae98.room.fragment
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.selection.SelectionPredicates
+import androidx.recyclerview.selection.SelectionTracker
+import androidx.recyclerview.selection.StorageStrategy
 import com.taetae98.room.GridSpacingItemDecoration
 import com.taetae98.room.R
 import com.taetae98.room.adapter.DrawerAdapter
@@ -27,6 +30,7 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
     override fun init() {
         super.init()
         initRecyclerView()
+        initSelectionTracker()
         initOnAddButton()
     }
 
@@ -35,6 +39,21 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
             adapter = drawerAdapter
             addItemDecoration(GridSpacingItemDecoration(2, 10.toDp()))
         }
+    }
+
+    private fun initSelectionTracker() {
+        with(binding.recyclerView) {
+            drawerAdapter.tracker = SelectionTracker.Builder(
+                "Selection",
+                this,
+                DrawerAdapter.DrawerKeyProvider(this),
+                DrawerAdapter.DrawerDetailsLookup(this),
+                StorageStrategy.createLongStorage()
+            ).withSelectionPredicate(
+                SelectionPredicates.createSelectAnything()
+            ).build()
+        }
+
     }
 
     private fun initOnAddButton() {
