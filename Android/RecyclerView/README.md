@@ -16,20 +16,29 @@
 ## 😊 Introduction
 ### ChatFragment
 #### MyChatHolder와 OtherChatHolder로 채팅을 구분, notifyItemInserted로 채팅을 추가
-![ChatFragment1](./readme/ChatFragment1.png){: width="30%" }![ChatFragment2](./readme/ChatFragment2.png)
+<img src="./readme/ChatFragment1.png" alt="ChatFragment1" width="30%">
+<img src="./readme/ChatFragment2.png" alt="ChatFragment2" width="30%">
+<br>
 
 ### GalleryFragment
 #### CardView와 GridLayoutManager을 사용해서 Gallery앱을 구현
-![GalleryFragment1](./readme/GalleryFragment1.png)![GalleryFragment2](./readme/GalleryFragment2.png)![GalleryFragment3](./readme/GalleryFragment3.png)
+<img src="./readme/GalleryFragment1.png" alt="GalleryFragment1" width="30%">
+<img src="./readme/GalleryFragment2.png" alt="GalleryFragment2" width="30%">
+<img src="./readme/GalleryFragment3.png" alt="GalleryFragment3" width="30%">
+<br>
 
 ### ToDoFragment
 #### Payload기능으로 ToDo 클릭시 체크표시 애니메이션 추가, 새로고침 누르면 모든 ToDo 체크표시 해제
-![ToDoFragment1](./readme/ToDoFragment1.png)![ToDoFragment2](./readme/ToDoFragment2.png)
+<img src="./readme/ToDoFragment1.png" alt="ToDoFragment1" width="30%">
+<img src="./readme/ToDoFragment2.png" alt="ToDoFragment2" width="30%">
+<br>
 
 ### SelectionFragment
 #### SelectionTracker를 사용하여 ViewHolder 선택기능 추가
 #### SelectionPredicate를 사용하여 특정 ViewHolder만 선택가능하게 구현
 #### SelectionObserver를 사용하여 Selection 활성화시 DeleteMenu 표시되게 구현
-![SelectionFragment1](./readme/SelectionFragment1.png)![SelectionFragment2](./readme/SelectionFragment2.png)![SelectionFragment3](./readme/SelectionFragment3.png)
-<img src="./readme/SelectionTrackerGIF.gif" width="30%">
-![SelectionTrackerGIF](./readme/SelectionTrackerGIF.gif){: width="100%" height="100%"}
+<img src="./readme/SelectionFragment1.png" alt="SelectionFragment1" width="30%">
+<img src="./readme/SelectionFragment2.png" alt="SelectionFragment3" width="30%">
+<img src="./readme/SelectionFragment3.png" alt="SelectionFragment3" width="30%">
+<br>
+<img src="./readme/SelectionTrackerGIF.gif" alt="SelectionTrackerGIF" width="30%">
