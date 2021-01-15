@@ -31,4 +31,5 @@
 #### SelectionPredicate를 사용하여 특정 ViewHolder만 선택가능하게 구현
 #### SelectionObserver를 사용하여 Selection 활성화시 DeleteMenu 표시되게 구현
 ![SelectionFragment1](./readme/SelectionFragment1.png)![SelectionFragment2](./readme/SelectionFragment2.png)![SelectionFragment3](./readme/SelectionFragment3.png)
+<img src="./readme/SelectionTrackerGIF.gif" width="30%">
 ![SelectionTrackerGIF](./readme/SelectionTrackerGIF.gif){: width="100%" height="100%"}
