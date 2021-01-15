@@ -45,6 +45,25 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
         this.menu = menu
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            MENU_DELETE -> {
+                CoroutineScope(Dispatchers.IO).launch {
+                    drawerAdapter.tracker?.selection?.forEach {
+                        AppDatabase.getInstance(requireContext()).drawer().delete(
+                            Drawer(id = it)
+                        )
+                    }
+
+                    withContext(Dispatchers.Main) {
+                        drawerAdapter.tracker?.clearSelection()
+                    }
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun init() {
         super.init()
         initRecyclerView()
@@ -77,21 +96,6 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
                         if (tracker.hasSelection() && menu.findItem(MENU_DELETE) == null) {
                             menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, "Delete")
                                 .setIcon(R.drawable.ic_delete)
-                                .setOnMenuItemClickListener {
-                                    CoroutineScope(Dispatchers.IO).launch {
-                                        tracker.selection.forEach {
-                                            AppDatabase.getInstance(requireContext()).drawer().delete(
-                                                Drawer(id = it)
-                                            )
-                                        }
-
-                                        withContext(Dispatchers.Main) {
-                                            tracker.clearSelection()
-                                        }
-                                    }
-
-                                    true
-                                }
                                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
                         } else if (!tracker.hasSelection() && menu.findItem(MENU_DELETE) != null) {
                             menu.removeItem(MENU_DELETE)
