@@ -22,10 +22,7 @@
 
 ### GalleryFragment
 #### CardView와 GridLayoutManager을 사용해서 Gallery앱을 구현
-<img src="./readme/GalleryFragment1.png" alt="GalleryFragment1" width="30%">
-<img src="./readme/GalleryFragment2.png" alt="GalleryFragment2" width="30%">
-<img src="./readme/GalleryFragment3.png" alt="GalleryFragment3" width="30%">
-<br>
+<img src="./readme/GalleryFragment1.png" alt="GalleryFragment1" width="30%"><img src="./readme/GalleryFragment2.png" alt="GalleryFragment2" width="30%"><img src="./readme/GalleryFragment3.png" alt="GalleryFragment3" width="30%">
 
 ### ToDoFragment
 #### Payload기능으로 ToDo 클릭시 체크표시 애니메이션 추가, 새로고침 누르면 모든 ToDo 체크표시 해제
