@@ -16,7 +16,7 @@
 ## 😊 Introduction
 ### ChatFragment
 #### MyChatHolder와 OtherChatHolder로 채팅을 구분, notifyItemInserted로 채팅을 추가
-![ChatFragment1](./readme/ChatFragment1.png)![ChatFragment2](./readme/ChatFragment2.png)
+![ChatFragment1](./readme/ChatFragment1.png){: width="30%" }![ChatFragment2](./readme/ChatFragment2.png)
 
 ### GalleryFragment
 #### CardView와 GridLayoutManager을 사용해서 Gallery앱을 구현
