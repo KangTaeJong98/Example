@@ -1,6 +1,9 @@
 package com.taetae98.room.fragment
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
@@ -16,8 +19,18 @@ import com.taetae98.room.toDp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_drawer) {
+    init {
+        setHasOptionsMenu(true)
+    }
+
+    companion object {
+        private const val MENU_DELETE = 1000
+    }
+
+    private lateinit var menu: Menu
     private val drawerAdapter by lazy { DrawerAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,6 +38,11 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
         AppDatabase.getInstance(requireContext()).drawer().findLiveData().observe(viewLifecycleOwner) {
             drawerAdapter.submitList(it)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        this.menu = menu
     }
 
     override fun init() {
@@ -51,7 +69,36 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
                 StorageStrategy.createLongStorage()
             ).withSelectionPredicate(
                 SelectionPredicates.createSelectAnything()
-            ).build()
+            ).build().apply {
+                addObserver(object : SelectionTracker.SelectionObserver<Long>() {
+                    override fun onSelectionChanged() {
+                        super.onSelectionChanged()
+                        val tracker = this@apply
+                        if (tracker.hasSelection() && menu.findItem(MENU_DELETE) == null) {
+                            menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, "Delete")
+                                .setIcon(R.drawable.ic_delete)
+                                .setOnMenuItemClickListener {
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        tracker.selection.forEach {
+                                            AppDatabase.getInstance(requireContext()).drawer().delete(
+                                                Drawer(id = it)
+                                            )
+                                        }
+
+                                        withContext(Dispatchers.Main) {
+                                            tracker.clearSelection()
+                                        }
+                                    }
+
+                                    true
+                                }
+                                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
+                        } else if (!tracker.hasSelection() && menu.findItem(MENU_DELETE) != null) {
+                            menu.removeItem(MENU_DELETE)
+                        }
+                    }
+                })
+            }
         }
 
     }

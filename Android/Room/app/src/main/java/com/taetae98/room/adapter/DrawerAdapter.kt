@@ -62,7 +62,11 @@ class DrawerAdapter : BaseAdapter<Drawer>(DrawerDiffItemCallback()) {
 
         override fun getPosition(key: Long): Int {
             val holder = recyclerView.findViewHolderForItemId(key)
-            return holder.adapterPosition
+            return if (holder is DrawerHolder) {
+                holder.adapterPosition
+            } else {
+                RecyclerView.NO_POSITION
+            }
         }
     }
 
@@ -71,14 +75,18 @@ class DrawerAdapter : BaseAdapter<Drawer>(DrawerDiffItemCallback()) {
             val view = recyclerView.findChildViewUnder(e.x, e.y) ?: return null
             val holder = recyclerView.getChildViewHolder(view)
 
-            return object : ItemDetails<Long>() {
-                override fun getPosition(): Int {
-                    return holder.adapterPosition
-                }
+            return if (holder is DrawerHolder) {
+                object : ItemDetails<Long>() {
+                    override fun getPosition(): Int {
+                        return holder.adapterPosition
+                    }
 
-                override fun getSelectionKey(): Long {
-                    return holder.itemId
+                    override fun getSelectionKey(): Long {
+                        return holder.itemId
+                    }
                 }
+            } else {
+                null
             }
         }
     }
