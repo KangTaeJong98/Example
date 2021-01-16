@@ -10,10 +10,18 @@
         android:id="@+id/toDoFragment"
         android:name="com.taetae98.room.fragment.ToDoFragment"
         tools:layout="@layout/fragment_todo"
-        android:label="ToDoFragment" />
+        android:label="ToDoFragment" >
+        <argument
+            android:name="drawerName"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/drawerFragment"
         android:name="com.taetae98.room.fragment.DrawerFragment"
         tools:layout="@layout/fragment_drawer"
-        android:label="DrawerFragment" />
+        android:label="DrawerFragment" >
+        <action
+            android:id="@+id/action_drawerFragment_to_toDoFragment"
+            app:destination="@id/toDoFragment" />
+    </fragment>
 </navigation>

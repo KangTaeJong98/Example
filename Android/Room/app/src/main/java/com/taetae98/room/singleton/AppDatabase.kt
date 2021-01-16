@@ -5,15 +5,15 @@ import androidx.room.CoroutinesRoom
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.taetae98.room.DATABASE_NAME
-import com.taetae98.room.data.Drawer
-import com.taetae98.room.data.DrawerDao
+import com.taetae98.room.data.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Drawer::class], version = 1, exportSchema = true)
+@Database(entities = [Drawer::class, ToDo::class], version = 2, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
         private var instance: AppDatabase? = null
@@ -26,17 +26,25 @@ abstract class AppDatabase : RoomDatabase() {
                             super.onCreate(db)
                             CoroutineScope(Dispatchers.IO).launch {
                                 getInstance(context).drawer().insert(
-                                    Drawer(title = "ToDo")
+                                    Drawer(name = "ToDo")
                                 )
                             }
                         }
                     })
+                    .addMigrations(MIGRATION_1_2)
                     .build()
             }.also {
                 instance = it
             }
         }
+
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE ToDo ADD COLUMN isFinished INTEGER DEFAULT 0 NOT NULL")
+            }
+        }
     }
 
     abstract fun drawer(): DrawerDao
+    abstract fun todo(): ToDoDao
 }

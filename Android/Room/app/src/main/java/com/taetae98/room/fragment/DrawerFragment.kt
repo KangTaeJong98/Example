@@ -10,16 +10,13 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import com.taetae98.room.GridSpacingItemDecoration
 import com.taetae98.room.R
-import com.taetae98.room.adapter.DrawerAdapter
+import com.taetae98.room.adapter.DrawerWithToDoAdapter
 import com.taetae98.room.base.BaseFragment
 import com.taetae98.room.data.Drawer
 import com.taetae98.room.databinding.FragmentDrawerBinding
 import com.taetae98.room.singleton.AppDatabase
 import com.taetae98.room.toDp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_drawer) {
     init {
@@ -31,12 +28,12 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
     }
 
     private lateinit var menu: Menu
-    private val drawerAdapter by lazy { DrawerAdapter() }
+    private val drawerWithToDoAdapter by lazy { DrawerWithToDoAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        AppDatabase.getInstance(requireContext()).drawer().findLiveData().observe(viewLifecycleOwner) {
-            drawerAdapter.submitList(it)
+        AppDatabase.getInstance(requireContext()).drawer().findLiveDataWithToDo().observe(viewLifecycleOwner) {
+            drawerWithToDoAdapter.submitList(it)
         }
     }
 
@@ -48,15 +45,17 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             MENU_DELETE -> {
-                CoroutineScope(Dispatchers.IO).launch {
-                    drawerAdapter.tracker?.selection?.forEach {
-                        AppDatabase.getInstance(requireContext()).drawer().delete(
-                            Drawer(id = it)
-                        )
-                    }
+                drawerWithToDoAdapter.tracker?.let {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val deleteList = ArrayList<Drawer>(it.selection.size())
+                        it.selection.forEach { id ->
+                            deleteList.add(Drawer(id = id))
+                        }
 
-                    withContext(Dispatchers.Main) {
-                        drawerAdapter.tracker?.clearSelection()
+                        AppDatabase.getInstance(requireContext()).drawer().delete(deleteList)
+                        withContext(Dispatchers.Main) {
+                            it.clearSelection()
+                        }
                     }
                 }
             }
@@ -73,18 +72,18 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
 
     private fun initRecyclerView() {
         with(binding.recyclerView) {
-            adapter = drawerAdapter
+            adapter = drawerWithToDoAdapter
             addItemDecoration(GridSpacingItemDecoration(2, 10.toDp()))
         }
     }
 
     private fun initSelectionTracker() {
         with(binding.recyclerView) {
-            drawerAdapter.tracker = SelectionTracker.Builder(
+            drawerWithToDoAdapter.tracker = SelectionTracker.Builder(
                 "Selection",
                 this,
-                DrawerAdapter.DrawerKeyProvider(this),
-                DrawerAdapter.DrawerDetailsLookup(this),
+                DrawerWithToDoAdapter.DrawerWithToDoKeyProvider(this),
+                DrawerWithToDoAdapter.DrawerWithToDoDetailsLookup(this),
                 StorageStrategy.createLongStorage()
             ).withSelectionPredicate(
                 SelectionPredicates.createSelectAnything()
@@ -110,10 +109,10 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
     private fun initOnAddButton() {
         binding.setOnAdd {
             with(binding.text) {
-                val title = text.trim()
-                if (title.isNotEmpty()) {
+                val name = text.trim()
+                if (name.isNotEmpty()) {
                     CoroutineScope(Dispatchers.IO).launch {
-                        AppDatabase.getInstance(requireContext()).drawer().insert(Drawer(title = title.toString()))
+                        AppDatabase.getInstance(requireContext()).drawer().insert(Drawer(name = name.toString()))
                         binding.text.text.clear()
                     }
                 }

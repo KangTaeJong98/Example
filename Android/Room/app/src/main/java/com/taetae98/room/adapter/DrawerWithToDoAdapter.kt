@@ -5,6 +5,7 @@ import android.view.MotionEvent
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.findNavController
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.ItemKeyProvider
 import androidx.recyclerview.selection.SelectionTracker
@@ -14,29 +15,37 @@ import com.taetae98.room.R
 import com.taetae98.room.base.BaseAdapter
 import com.taetae98.room.base.BaseHolder
 import com.taetae98.room.data.Drawer
+import com.taetae98.room.data.DrawerWithToDo
 import com.taetae98.room.databinding.HolderDrawerBinding
+import com.taetae98.room.fragment.DrawerFragmentDirections
 
-class DrawerAdapter : BaseAdapter<Drawer>(DrawerDiffItemCallback()) {
+class DrawerWithToDoAdapter : BaseAdapter<DrawerWithToDo>(DrawerWithToDoItemCallback()) {
     var tracker: SelectionTracker<Long>? = null
 
     init {
         setHasStableIds(true)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, Drawer> {
-        return DrawerHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseHolder<out ViewDataBinding, DrawerWithToDo> {
+        return DrawerWithToDoHolder(HolderDrawerBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun getItemId(position: Int): Long {
-        return getItem(position).id
+        return getItem(position).drawer.id
     }
 
     override fun getItemViewType(position: Int): Int {
         return R.layout.holder_drawer
     }
 
-    inner class DrawerHolder(binding: HolderDrawerBinding) : BaseHolder<HolderDrawerBinding, Drawer>(binding) {
-        override fun bind(element: Drawer) {
+    inner class DrawerWithToDoHolder(binding: HolderDrawerBinding) : BaseHolder<HolderDrawerBinding, DrawerWithToDo>(binding) {
+        init {
+            itemView.setOnClickListener {
+                it.findNavController().navigate(DrawerFragmentDirections.actionDrawerFragmentToToDoFragment(element.drawer.name))
+            }
+        }
+
+        override fun bind(element: DrawerWithToDo) {
             super.bind(element)
             binding.drawer = element
 
@@ -44,17 +53,17 @@ class DrawerAdapter : BaseAdapter<Drawer>(DrawerDiffItemCallback()) {
         }
     }
 
-    class DrawerDiffItemCallback : DiffUtil.ItemCallback<Drawer>() {
-        override fun areItemsTheSame(oldItem: Drawer, newItem: Drawer): Boolean {
-            return oldItem.id == newItem.id
+    class DrawerWithToDoItemCallback : DiffUtil.ItemCallback<DrawerWithToDo>() {
+        override fun areItemsTheSame(oldItem: DrawerWithToDo, newItem: DrawerWithToDo): Boolean {
+            return oldItem.drawer.name == newItem.drawer.name
         }
 
-        override fun areContentsTheSame(oldItem: Drawer, newItem: Drawer): Boolean {
-            return oldItem.title == newItem.title && oldItem.count == newItem.count
+        override fun areContentsTheSame(oldItem: DrawerWithToDo, newItem: DrawerWithToDo): Boolean {
+            return oldItem.todoList == newItem.todoList
         }
     }
 
-    class DrawerKeyProvider(private val recyclerView: RecyclerView) : ItemKeyProvider<Long>(SCOPE_CACHED) {
+    class DrawerWithToDoKeyProvider(private val recyclerView: RecyclerView) : ItemKeyProvider<Long>(SCOPE_CACHED) {
         override fun getKey(position: Int): Long {
             val holder = recyclerView.findViewHolderForAdapterPosition(position)
             return holder?.itemId ?: throw IllegalStateException("No Holder")
@@ -62,7 +71,7 @@ class DrawerAdapter : BaseAdapter<Drawer>(DrawerDiffItemCallback()) {
 
         override fun getPosition(key: Long): Int {
             val holder = recyclerView.findViewHolderForItemId(key)
-            return if (holder is DrawerHolder) {
+            return if (holder is DrawerWithToDoHolder) {
                 holder.adapterPosition
             } else {
                 RecyclerView.NO_POSITION
@@ -70,12 +79,12 @@ class DrawerAdapter : BaseAdapter<Drawer>(DrawerDiffItemCallback()) {
         }
     }
 
-    class DrawerDetailsLookup(private val recyclerView: RecyclerView) : ItemDetailsLookup<Long>() {
+    class DrawerWithToDoDetailsLookup(private val recyclerView: RecyclerView) : ItemDetailsLookup<Long>() {
         override fun getItemDetails(e: MotionEvent): ItemDetails<Long>? {
             val view = recyclerView.findChildViewUnder(e.x, e.y) ?: return null
             val holder = recyclerView.getChildViewHolder(view)
 
-            return if (holder is DrawerHolder) {
+            return if (holder is DrawerWithToDoHolder) {
                 object : ItemDetails<Long>() {
                     override fun getPosition(): Int {
                         return holder.adapterPosition

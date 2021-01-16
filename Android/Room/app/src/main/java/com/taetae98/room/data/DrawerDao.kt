@@ -9,4 +9,7 @@ import com.taetae98.room.base.BaseDao
 interface DrawerDao : BaseDao<Drawer> {
     @Query("SELECT * FROM Drawer")
     fun findLiveData(): LiveData<MutableList<Drawer>>
+
+    @Query("SELECT * FROM Drawer")
+    fun findLiveDataWithToDo(): LiveData<MutableList<DrawerWithToDo>>
 }

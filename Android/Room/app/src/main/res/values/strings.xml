@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Room</string>
     <string name="add">Add</string>
+    <string name="filter">Filter</string>
+    <string name="not_finished">Not Finished</string>
+    <string name="finished">Finished</string>
 </resources>

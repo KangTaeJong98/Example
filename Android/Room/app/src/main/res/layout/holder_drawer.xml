@@ -5,7 +5,7 @@
     <data>
         <variable
             name="drawer"
-            type="com.taetae98.room.data.Drawer" />
+            type="com.taetae98.room.data.DrawerWithToDo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,14 +17,15 @@
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
 
-            android:text="@{drawer.title}"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@{drawer.drawer.name, default=Title}"
             android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
 
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/count"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:text="@{String.valueOf(drawer.count)}"
+            android:text="@{`(` + String.valueOf(drawer.todoList.size()) + `)`, default=`(0)`}"
             android:textAlignment="center"
 
             app:layout_constraintBottom_toBottomOf="parent"
