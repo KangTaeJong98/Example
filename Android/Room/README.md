@@ -15,10 +15,10 @@
 ### DrawerFragment
 * #### Drawer의 이름을 표시하고 Drawer에 포함된 ToDo의 갯 수를 표현했습니다. (관계를 이용하여 Drawer에 포함된 ToDo를 구함)
 * #### RecyclerView Selection을 사용하여 Drawer를 삭제하는 기능을 넣었습니다. (관계를 이용하여 Drawer에 포함된 ToDo전부 삭제)
-<img src="./readme/DrawerFragment1.png" alt="DrawerFragment1" width="30%"> <img src="./readme/DrawerFragment2.png" alt="DrawerFragment2" width="30%">
+<img src="./readme/DrawerFragment1.png" alt="DrawerFragment1" width="30%"><img src="./readme/DrawerFragment2.png" alt="DrawerFragment2" width="30%">
 
 ### ToDoFragment
 * #### navigation을 사용하여 Drawer 클릭시 Drawer의 name을 전달하여 해당 Drawer에 속하는 ToDo를 표현했습니다.
 * #### ItemTouchHelper를 이용하여 완료되지 않은 ToDo를 Swipe하면 완료된으로 바꾸고, 완료된 ToDo를 좌로 Swipe하면 복구, 우로 Swipe하면 삭제로 구현했습니다.
 * #### DataBindingAdapter를 사용하여 완료된 ToDo는 Text에 가운데 선을 넣었습니다.
-<img src="./readme/ShoppingDrawer.png" alt="ShoppingDrawer" width="30%"> <img src="./readme/SchoolDrawerNotFinished.png" alt="SchoolDrawerNotFinished" width="30%"> <img src="./readme/SchoolDrawerFinished.png" alt="SchoolDrawerFinished" width="30%">
+<img src="./readme/ShoppingDrawer.png" alt="ShoppingDrawer" width="30%"><img src="./readme/SchoolDrawerNotFinished.png" alt="SchoolDrawerNotFinished" width="30%"><img src="./readme/SchoolDrawerFinished.png" alt="SchoolDrawerFinished" width="30%">
