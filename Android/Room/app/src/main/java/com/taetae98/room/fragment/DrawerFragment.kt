@@ -113,7 +113,9 @@ class DrawerFragment : BaseFragment<FragmentDrawerBinding>(R.layout.fragment_dra
                 if (name.isNotEmpty()) {
                     CoroutineScope(Dispatchers.IO).launch {
                         AppDatabase.getInstance(requireContext()).drawer().insert(Drawer(name = name.toString()))
-                        binding.text.text.clear()
+                        withContext(Dispatchers.Main) {
+                            binding.text.text.clear()
+                        }
                     }
                 }
             }

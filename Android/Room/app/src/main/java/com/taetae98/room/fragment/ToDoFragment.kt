@@ -1,6 +1,7 @@
 package com.taetae98.room.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -21,6 +22,7 @@ import com.taetae98.room.toDp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.properties.Delegates
 
 class ToDoFragment : BaseFragment<FragmentTodoBinding>(R.layout.fragment_todo) {
@@ -42,6 +44,9 @@ class ToDoFragment : BaseFragment<FragmentTodoBinding>(R.layout.fragment_todo) {
         AppDatabase.getInstance(requireContext()).todo().findLiveDataByDrawerName(drawerName).observe(viewLifecycleOwner) {
             currentList = it
             submitList()
+        }
+        AppDatabase.getInstance(requireContext()).todo().findLiveDataMinimal().observe(viewLifecycleOwner) {
+            Log.d("LOG_ROOM", it.toString())
         }
     }
 
@@ -120,7 +125,9 @@ class ToDoFragment : BaseFragment<FragmentTodoBinding>(R.layout.fragment_todo) {
                 if (name.isNotEmpty()) {
                     CoroutineScope(Dispatchers.IO).launch {
                         AppDatabase.getInstance(requireContext()).todo().insert(ToDo(text = name.toString(), drawerName = drawerName))
-                        binding.text.text.clear()
+                        withContext(Dispatchers.Main) {
+                            binding.text.text.clear()
+                        }
                     }
                 }
             }

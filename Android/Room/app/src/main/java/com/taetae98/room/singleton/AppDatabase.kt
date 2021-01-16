@@ -1,10 +1,7 @@
 package com.taetae98.room.singleton
 
 import android.content.Context
-import androidx.room.CoroutinesRoom
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.taetae98.room.DATABASE_NAME
@@ -12,8 +9,10 @@ import com.taetae98.room.data.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 @Database(entities = [Drawer::class, ToDo::class], version = 2, exportSchema = true)
+@TypeConverters(AppDatabase.RoomTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
         private var instance: AppDatabase? = null
@@ -32,6 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
                         }
                     })
                     .addMigrations(MIGRATION_1_2)
+//                    .allowMainThreadQueries()
                     .build()
             }.also {
                 instance = it
@@ -47,4 +47,16 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun drawer(): DrawerDao
     abstract fun todo(): ToDoDao
+
+    class RoomTypeConverter {
+        @TypeConverter
+        fun dateToLong(date: Date): Long {
+            return date.time
+        }
+
+        @TypeConverter
+        fun longToDate(time: Long): Date {
+            return Date(time)
+        }
+    }
 }
