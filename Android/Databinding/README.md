@@ -1,4 +1,4 @@
-# RecyclerView 예제
+# DataBinding 예제
 
 ## ⚡ Features
 * Base패턴을 사용하여 Activity, Fragment, View, Dialog, Holder등 바인딩 객체를 얻는 법을 사용했습니다. (https://rkdxowhd98.tistory.com/113)
