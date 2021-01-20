@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TextInputLayout</string>
+    <string name="id">ID</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="join">Join</string>
+    <string name="password_confirm">Password Confirm</string>
+    <string name="name">Name</string>
+    <string name="write_your_email">Write your email</string>
+    <string name="write_only_text">Write only text</string>
+    <string name="include_one_or_more_special_characters">Include one or moe special characters.</string>
+    <string name="write_your_password">Write your password</string>
+</resources>
