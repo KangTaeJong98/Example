@@ -15,12 +15,19 @@
             type="View.OnClickListener" />
     </data>
 
-    <ImageView
-        app:imageUrl="@{movie.imageUrl}"
-        app:error="@{@drawable/ic_error}"
-        android:contentDescription="@string/poster"
-
-        android:onClick="@{onClick}"
+    <com.google.android.material.card.MaterialCardView
+        app:cardCornerRadius="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            app:imageUrl="@{movie.imageUrl}"
+            app:error="@{@drawable/ic_error}"
+            android:contentDescription="@string/poster"
+
+            android:onClick="@{onClick}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.card.MaterialCardView>
 </layout>

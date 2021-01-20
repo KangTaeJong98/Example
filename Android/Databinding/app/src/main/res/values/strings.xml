@@ -2,4 +2,6 @@
     <string name="app_name">Databinding</string>
     <string name="image">Image</string>
     <string name="poster">Poster</string>
+    <string name="movie">Movie</string>
+    <string name="information">Information</string>
 </resources>

@@ -9,6 +9,20 @@
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.taetae98.databinding.fragment.MovieFragment"
-        android:label="MovieFragment"
+        android:label="@string/movie"
         tools:layout="@layout/fragment_movie"/>
+
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.taetae98.databinding.fragment.InformationFragment"
+        android:label="@string/information"
+        tools:layout="@layout/fragment_information">
+        <argument
+            android:name="movie"
+            app:argType="com.taetae98.databinding.data.Movie" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_informationFragment"
+        app:destination="@id/informationFragment" />
 </navigation>
