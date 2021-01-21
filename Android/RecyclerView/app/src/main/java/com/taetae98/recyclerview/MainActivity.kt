@@ -17,7 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         AppBarConfiguration(
             setOf(
                     R.id.chatFragment, R.id.galleryFragment,
-                    R.id.toDoFragment, R.id.selectionFragment
+                    R.id.toDoFragment, R.id.selectionFragment, R.id.snapHelperFragment
             ),
             binding.drawer
         )

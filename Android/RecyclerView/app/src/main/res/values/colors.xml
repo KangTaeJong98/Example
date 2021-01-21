@@ -18,4 +18,6 @@
     <color name="todo_background">#3C5899</color>
 
     <color name="selection_background">#3C5899</color>
+
+    <color name="snap_helper_background">#3C5899</color>
 </resources>

@@ -11,4 +11,5 @@
     <string name="is_finished">isFinished</string>
     <string name="refresh">Refresh</string>
     <string name="selection">Selection</string>
+    <string name="snap_helper">Snap Helper</string>
 </resources>

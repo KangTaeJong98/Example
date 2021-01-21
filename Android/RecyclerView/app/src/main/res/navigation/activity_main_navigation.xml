@@ -37,5 +37,10 @@
         android:name="com.taetae98.recyclerview.fragment.SelectionFragment"
         tools:layout="@layout/fragment_selection"
         android:label="SelectionFragment" />
+    <fragment
+        android:id="@+id/snapHelperFragment"
+        android:name="com.taetae98.recyclerview.fragment.SnapHelperFragment"
+        android:label="SnapHelperFragment"
+        tools:layout="@layout/fragment_snap_helper"/>
 
 </navigation>

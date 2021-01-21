@@ -16,4 +16,8 @@
     <item
         android:id="@+id/selectionFragment"
         android:title="@string/selection"/>
+
+    <item
+        android:id="@+id/snapHelperFragment"
+        android:title="@string/snap_helper" />
 </menu>
