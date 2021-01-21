@@ -23,6 +23,8 @@
 
 * Selection(Observer) : SelectionTracker에서 Selection에 Observer를 통하여 콜백함수를 작성할 수 있습니다. (https://rkdxowhd98.tistory.com/101)
 
+* SnapHelper : RecyclerView를 ViewPager처럼 쓰거나 Scroll시 하나의 Item 자석처럼 끌어당겨 선택하는 효과를 줄 수 있습니다. (https://rkdxowhd98.tistory.com/116)
+
 ## 😊 Introduction
 ### ChatFragment
 * #### MyChatHolder와 OtherChatHolder로 채팅을 구분, notifyItemInserted로 채팅을 추가
@@ -42,3 +44,7 @@
 * #### SelectionObserver를 사용하여 Selection 활성화시 DeleteMenu 표시되게 구현
 <img src="./readme/SelectionFragment1.png" alt="SelectionFragment1" width="30%"><img src="./readme/SelectionFragment2.png" alt="SelectionFragment3" width="30%"><img src="./readme/SelectionFragment3.png" alt="SelectionFragment3" width="30%">
 <img src="./readme/SelectionTrackerGIF.gif" alt="SelectionTrackerGIF" width="30%">
+
+### SnapHelperFragment
+* #### LinearSnapHelper와 OnScrollListener를 사용하여 SnapHelper가 선택한 Item의 Position을 확인했습니다.
+<img src="./readme/SnapHelperFragment.gif" alt="SelectionTrackerGIF" width="30%">
