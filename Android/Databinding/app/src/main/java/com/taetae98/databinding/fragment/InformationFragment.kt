@@ -6,7 +6,7 @@ import com.taetae98.databinding.base.BaseFragment
 import com.taetae98.databinding.databinding.FragmentInformationBinding
 
 class InformationFragment : BaseFragment<FragmentInformationBinding>(R.layout.fragment_information) {
-    val args by navArgs<InformationFragmentArgs>()
+    private val args by navArgs<InformationFragmentArgs>()
 
     override fun init() {
         super.init()

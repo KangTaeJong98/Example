@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.taetae98.coordinatorlayout.fragment.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main"/>
+    <fragment
+        android:id="@+id/informationFragment"
+        android:name="com.taetae98.coordinatorlayout.fragment.InformationFragment"
+        android:label="InformationFragment"
+        tools:layout="@layout/fragment_information">
+        <argument
+            android:name="movie"
+            app:argType="com.taetae98.coordinatorlayout.data.Movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.taetae98.coordinatorlayout.fragment.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite"/>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.taetae98.coordinatorlayout.fragment.ListFragment"
+        android:label="ListFragment"
+        tools:layout="@layout/fragment_list"/>
+    <action
+        android:id="@+id/action_global_informationFragment"
+        app:destination="@id/informationFragment" />
+</navigation>
