@@ -18,6 +18,7 @@
 * #### ViewPager2와 TabLayout을 사용하여 Favortite / List를 표현했습니다.
 * #### AppBarLayout의 enterAlways Scroll Flag를 사용하여 Scroll을 내리면 TabLayout을 사라지게 하고 Scroll을 올리면 TabLayout을 보이게 했습니다.
 <img src="./readme/MainFragment1.png" alt="MainFragment1" width="30%"><img src="./readme/MainFragment2.png" alt="MainFragment2" width="30%"><img src="./readme/MainFragment3.png" alt="MainFragment3" width="30%">
+<img src="./readme/MainFragment.gif" alt="MainFragment" width="30%">
 
 ### FavoriteFragment
 * #### InformationFragment에서 Favorite한 Movie만 나오게 했습니다.
@@ -28,6 +29,7 @@
 * #### Movie를 RecyclerView의 StaggeredLayoutManager를 사용하여 표현했습니다.
 * #### Glide를 사용하여 영화의 포스터를 ImageView에 업데이트하였습니다.
 <img src="./readme/ListFragment1.png" alt="ListFragment1" width="30%">
+<img src="./readme/ListFragment.gif" alt="ListFragment" width="30%">
 
 ### InformationFragment
 * #### Navigation을 통해 Movie를 arg로 받습니다.
