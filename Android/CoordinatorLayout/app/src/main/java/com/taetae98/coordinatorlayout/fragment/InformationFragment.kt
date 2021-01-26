@@ -16,12 +16,23 @@ class InformationFragment : BaseFragment<FragmentInformationBinding>(R.layout.fr
     override fun init() {
         super.init()
         initMovie()
+        initNestedScrollView()
         initOnFavoriteButton()
         initRecyclerView()
     }
 
     private fun initMovie() {
         binding.movie = args.movie
+    }
+
+    private fun initNestedScrollView() {
+        binding.nestedScrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY >= binding.toolbar.height && oldScrollY < binding.toolbar.height) {
+                Log.d("COORDINATOR", "COLLAPSED")
+            } else if (scrollY < binding.toolbar.height && oldScrollY >= binding.toolbar.height){
+                Log.d("COORDINATOR", "EXPANDED")
+            }
+        }
     }
 
     private fun initOnFavoriteButton() {
