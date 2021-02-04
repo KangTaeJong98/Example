@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Location</string>
+    <string name="run_on_background">Run On Background</string>
+</resources>

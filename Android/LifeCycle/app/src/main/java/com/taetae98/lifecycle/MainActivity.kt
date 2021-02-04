@@ -9,9 +9,13 @@ import com.taetae98.lifecycle.databinding.ActivityMainBinding
 import com.taetae98.lifecycle.model.ChronometerViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-//    생성자가 필요한 ViewModel 사용하는 코드. (ViewModelProvider.Factory 사용하면 된다.)
+//    생성자가 필요한 ViewModel을 사용하는 코드. (ViewModelProvider.Factory를 사용하면 된다.)
+//    private val model by lazy { ViewModelProvider(this, ChronometerViewModelFactory(3000L)).get(ChronometerViewModel::class.java) }
 //    private val model by viewModels<ChronometerViewModel> { ChronometerViewModelFactory(3000L) }
 
+
+//    생성자가 필요없는 ViewModel을 사용하는 코드
+//    private val model by lazy { ViewModelProvider(this).get(ChronometerViewModel::class.java) }
     private val model by viewModels<ChronometerViewModel>()
     private val recordAdapter by lazy { RecordAdapter() }
 
