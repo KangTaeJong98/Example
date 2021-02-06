@@ -18,7 +18,6 @@
 * #### ViewPager2와 TabLayout을 사용하여 Favortite / List를 표현했습니다.
 * #### AppBarLayout의 enterAlways Scroll Flag를 사용하여 Scroll을 내리면 TabLayout을 사라지게 하고 Scroll을 올리면 TabLayout을 보이게 했습니다.
 <img src="./readme/MainFragment1.png" alt="MainFragment1" width="30%"><img src="./readme/MainFragment2.png" alt="MainFragment2" width="30%"><img src="./readme/MainFragment3.png" alt="MainFragment3" width="30%">
-<img src="./readme/MainFragment.gif" alt="MainFragment" width="30%">
 
 ### FavoriteFragment
 * #### InformationFragment에서 Favorite한 Movie만 나오게 했습니다.
@@ -36,4 +35,6 @@
 * #### CollapsingToolbarLayout을 사용하여 Title을 표현하고 CollapseMode를 pin으로 설정하여 Collapse된 상태에서 Movie의 Title을 보여줍니다.
 * #### FloatingActionButton에 Custom Behavior를 설정하여 Scroll을 내리면 숨기고 Scroll을 올리면 보이게 하였습니다.
 <img src="./readme/InformationFragment1.png" alt="InformationFragment1" width="30%"><img src="./readme/InformationFragment2.png" alt="InformationFragment2" width="30%"><img src="./readme/InformationFragment3.png" alt="InformationFragment3" width="30%">
+<img src="./readme/InformationFragment.gif" alt="InformationFragment" width="30%">
+
 
