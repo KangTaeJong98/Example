@@ -12,4 +12,4 @@
 
 ### Notification
 * #### Background 위치 정보와 requestLocationupdates를 통해 실시간으로 업데이트 되는 위치 정보를 수신했습니다.
-<img src="./readme/Notification.png" alt="Notification" width="60%">
+<img src="./readme/Notification.png" alt="Notification" width="30%">
