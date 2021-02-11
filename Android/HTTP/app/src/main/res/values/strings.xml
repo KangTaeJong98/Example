@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HTTP</string>
+    <string name="volley">Volley</string>
+    <string name="url">URL</string>
+    <string name="submit">Submit</string>
+    <string name="get">GET</string>
+    <string name="post">POST</string>
+</resources>
