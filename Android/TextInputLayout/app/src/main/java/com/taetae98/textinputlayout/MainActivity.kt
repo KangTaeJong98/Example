@@ -2,6 +2,8 @@ package com.taetae98.textinputlayout
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import com.taetae98.textinputlayout.base.BaseActivity
