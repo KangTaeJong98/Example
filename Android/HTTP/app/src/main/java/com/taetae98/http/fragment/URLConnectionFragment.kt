@@ -9,6 +9,7 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.taetae98.http.R
 import com.taetae98.http.base.BaseFragment
 import com.taetae98.http.databinding.FragmentUrlConnectionBinding
+import com.taetae98.http.singleton.Server
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
@@ -189,6 +190,6 @@ class URLConnectionFragment : BaseFragment<FragmentUrlConnectionBinding>(R.layou
     }
 
     private fun getURL(): String {
-        return "http://192.168.75.226:8080/$selectedContentType"
+        return "${Server.PROTOCOL}://${Server.IP}:${Server.PORT}/$selectedContentType"
     }
 }

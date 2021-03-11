@@ -6,4 +6,11 @@
     <item
         android:id="@+id/URLConnectionFragment"
         android:title="@string/url_connection" />
+
+    <item
+        android:id="@+id/volleyFragment"
+        android:title="@string/volley" />
+    <item
+        android:id="@+id/retrofitFragment"
+        android:title="@string/retrofit" />
 </menu>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">HTTP</string>
-    <string name="url_connection">Url Connection</string>
+    <string name="url_connection">URLConnection</string>
     <string name="json">Json</string>
     <string name="string">String</string>
     <string name="parameter">Parameter</string>
@@ -12,4 +12,6 @@
     <string name="method">Method</string>
     <string name="parameter1">Parameter1</string>
     <string name="parameter2">Parameter2</string>
+    <string name="volley">Volley</string>
+    <string name="retrofit">Retrofit</string>
 </resources>

@@ -8,6 +8,16 @@
     <fragment
         android:id="@+id/URLConnectionFragment"
         android:name="com.taetae98.http.fragment.URLConnectionFragment"
-        android:label="URLConnectionFragment"
+        android:label="@string/url_connection"
         tools:layout="@layout/fragment_url_connection"/>
+    <fragment
+        android:id="@+id/volleyFragment"
+        android:name="com.taetae98.http.fragment.VolleyFragment"
+        android:label="@string/volley"
+        tools:layout="@layout/fragment_volley"/>
+    <fragment
+        android:id="@+id/retrofitFragment"
+        android:name="com.taetae98.http.fragment.RetrofitFragment"
+        android:label="RetrofitFragment"
+        tools:layout="@layout/fragment_retrofit"/>
 </navigation>
