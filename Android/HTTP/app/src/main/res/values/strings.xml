@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">HTTP</string>
+    <string name="url_connection">Url Connection</string>
+    <string name="json">Json</string>
+    <string name="string">String</string>
+    <string name="parameter">Parameter</string>
+    <string name="get">GET</string>
+    <string name="post">POST</string>
+    <string name="submit">Submit</string>
+    <string name="result">Result</string>
+    <string name="content_type">Content-Type</string>
+    <string name="method">Method</string>
+    <string name="parameter1">Parameter1</string>
+    <string name="parameter2">Parameter2</string>
 </resources>
