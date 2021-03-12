@@ -155,6 +155,7 @@ class URLConnectionFragment : BaseFragment<FragmentUrlConnectionBinding>(R.layou
                 readTimeout = 3000
                 setRequestProperty("Content-Type", selectedContentType)
 
+                headerFields
                 outputStream.bufferedWriter().use {
                     it.write(getParameter())
                 }

@@ -14,4 +14,5 @@
     <string name="parameter2">Parameter2</string>
     <string name="volley">Volley</string>
     <string name="retrofit">Retrofit</string>
+    <string name="sync_submit">Sync Submit</string>
 </resources>

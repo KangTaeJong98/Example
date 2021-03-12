@@ -8,6 +8,10 @@
         <variable
             name="onSubmit"
             type="OnClickListener" />
+
+        <variable
+            name="onSyncSubmit"
+            type="OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -126,6 +130,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/submit_button"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -133,10 +138,23 @@
                     android:text="@string/submit"
                     android:textColor="@color/black"
                     app:backgroundTint="@color/color4"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/content_type_input_layout" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/sync_submit_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:onClick="@{onSyncSubmit}"
+                    android:text="@string/sync_submit"
+                    android:textColor="@color/black"
+                    app:backgroundTint="@color/color4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/submit_button" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

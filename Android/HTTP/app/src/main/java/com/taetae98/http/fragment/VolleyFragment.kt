@@ -4,8 +4,10 @@ import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.RequestFuture
 import com.android.volley.toolbox.StringRequest
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.taetae98.http.R
@@ -13,7 +15,11 @@ import com.taetae98.http.base.BaseFragment
 import com.taetae98.http.databinding.FragmentVolleyBinding
 import com.taetae98.http.singleton.Server
 import com.taetae98.http.singleton.VolleyHTTP
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.json.JSONObject
+import kotlin.concurrent.thread
 
 class VolleyFragment : BaseFragment<FragmentVolleyBinding>(R.layout.fragment_volley) {
     private val methods = arrayOf("GET", "POST")
@@ -28,6 +34,7 @@ class VolleyFragment : BaseFragment<FragmentVolleyBinding>(R.layout.fragment_vol
         initMethodAutoCompleteTextView()
         initContentTypeAutoCompleteTextView()
         initOnSubmit()
+        initOnSyncSubmit()
     }
 
     private fun initSupportActionBar() {
@@ -69,6 +76,12 @@ class VolleyFragment : BaseFragment<FragmentVolleyBinding>(R.layout.fragment_vol
                     json()
                 }
             }
+        }
+    }
+
+    private fun initOnSyncSubmit() {
+        binding.setOnSyncSubmit {
+            syncVolley()
         }
     }
 
@@ -158,6 +171,42 @@ class VolleyFragment : BaseFragment<FragmentVolleyBinding>(R.layout.fragment_vol
         )
 
         VolleyHTTP.getInstance(requireContext()).request(request)
+    }
+
+    private fun syncVolley() {
+        val parameter1 = binding.parameter1InputLayout.editText!!.text.toString()
+        val parameter2 = binding.parameter2InputLayout.editText!!.text.toString()
+        val parameters = JSONObject(hashMapOf<Any?, Any?>("parameter1" to parameter1, "parameter2" to parameter2))
+
+        val requestFuture = RequestFuture.newFuture<JSONObject>()
+
+        val request = object : JsonObjectRequest(Method.POST, "${Server.PROTOCOL}://${Server.IP}:${Server.PORT}/application/json", parameters, requestFuture, requestFuture) {
+            override fun getHeaders(): MutableMap<String, String> {
+                return HashMap<String, String>(super.getHeaders()).apply {
+                    put("Content-Type", "application/json")
+                }
+            }
+        }.apply {
+            // timeOutMs += timeOutMs * backoffMultiplier
+            retryPolicy = DefaultRetryPolicy(1000, 2, 3.0F)
+        }
+
+        VolleyHTTP.getInstance(requireContext()).request(request)
+
+        thread {
+            val jsonObject = requestFuture.get()
+            CoroutineScope(Dispatchers.Main).launch {
+                binding.resultTextView.text = jsonObject.toString()
+            }
+        }
+
+
+//        thread {
+//            val jsonObject = requestFuture.get()
+//            Handler(Looper.getMainLooper()).post {
+//                binding.resultTextView.text = jsonObject.toString()
+//            }
+//        }
     }
 
     private fun getParameter(): String {
