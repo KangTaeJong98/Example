@@ -11,6 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="?colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,7 +19,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:id="@+id/qr_code_input_layout"
             android:hint="@string/qr_code"
+            android:textColorHint="?attr/colorOnPrimary"
+            app:hintTextColor="?attr/colorOnPrimary"
+            app:boxStrokeColor="?attr/colorPrimaryVariant"
             app:endIconMode="clear_text"
+            app:endIconTint="?attr/colorOnPrimary"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,18 +32,23 @@
             app:layout_constraintEnd_toEndOf="parent" >
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="text"
+                android:textColor="?attr/colorOnPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:onClick="@{onGenerate}"
-            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/qr_code_input_layout"
+            android:layout_margin="10dp"
+            android:insetBottom="0dp"
+            android:onClick="@{onGenerate}"
+            android:text="@string/generate"
+            app:backgroundTint="?attr/colorPrimaryVariant"
+            app:iconPadding="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/qr_code_input_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

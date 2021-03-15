@@ -16,28 +16,35 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="?attr/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
+            android:background="?attr/colorPrimaryVariant"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:titleTextColor="?attr/colorOnPrimary"/>
 
-        <ImageView
-            app:qrCode="@{qrCode}"
-            android:contentDescription="@string/qr_barcode"
-            android:onClick="@{onClick}"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/guideline"
-            tools:src="@drawable/ic_launcher_foreground"/>
+            app:layout_constraintBottom_toTopOf="@id/guideline">
+            <ImageView
+                app:qrCode="@{qrCode}"
+                android:contentDescription="@string/qr_barcode"
+                android:onClick="@{onClick}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="@drawable/ic_launcher_foreground"/>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -54,6 +61,7 @@
             android:text="@{qrCode}"
             android:gravity="center"
             android:textSize="20sp"
+            android:textColor="?attr/colorOnPrimary"
             android:onClick="@{onClick}"
             android:layout_width="0dp"
             android:layout_height="0dp"
