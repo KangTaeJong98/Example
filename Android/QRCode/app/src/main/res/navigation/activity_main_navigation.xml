@@ -9,5 +9,14 @@
         android:id="@+id/mainFragment"
         android:name="com.taetae98.qrcode.fragment.MainFragment"
         android:label="@string/qr_code"
-        tools:layout="@layout/fragment_main"/>
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_generateDialog"
+            app:destination="@id/generateDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/generateDialog"
+        android:name="com.taetae98.qrcode.dialog.GenerateDialog"
+        android:label="GenerateDialog"
+        tools:layout="@layout/dialog_generate"/>
 </navigation>
