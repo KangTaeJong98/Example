@@ -46,7 +46,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
                                 findNavController().navigate(MainFragmentDirections.actionMainFragmentToGenerateDialog())
                             }
                             getString(R.string.scan) -> {
-
+                                findNavController().navigate(MainFragmentDirections.actionMainFragmentToScanDialog())
                             }
                         }
                     }

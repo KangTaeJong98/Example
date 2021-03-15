@@ -15,10 +15,8 @@ object BindingAdapter {
             return
         }
 
-        val writer = MultiFormatWriter()
-        val bitMatrix = writer.encode(String(qrCode.toByteArray(), Charsets.ISO_8859_1), BarcodeFormat.QR_CODE, 400, 400)
         val barcodeEncoder = BarcodeEncoder()
-        val bitmap = barcodeEncoder.createBitmap(bitMatrix)
+        val bitmap = barcodeEncoder.encodeBitmap(qrCode.toByteArray().toString(Charsets.ISO_8859_1), BarcodeFormat.QR_CODE, 400, 400)
 
         view.setImageBitmap(bitmap)
     }

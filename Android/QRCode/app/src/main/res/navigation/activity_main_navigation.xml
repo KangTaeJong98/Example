@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_mainFragment_to_generateDialog"
             app:destination="@id/generateDialog" />
+        <action
+            android:id="@+id/action_mainFragment_to_scanDialog"
+            app:destination="@id/scanDialog" />
     </fragment>
     <dialog
         android:id="@+id/generateDialog"
         android:name="com.taetae98.qrcode.dialog.GenerateDialog"
         android:label="GenerateDialog"
         tools:layout="@layout/dialog_generate"/>
+    <dialog
+        android:id="@+id/scanDialog"
+        android:name="com.taetae98.qrcode.dialog.ScanDialog"
+        android:label="ScanDialog" />
 </navigation>
