@@ -1,7 +1,5 @@
 package com.taetae98.http.fragment
 
-import android.os.Handler
-import android.os.Looper
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -10,6 +8,9 @@ import com.taetae98.http.R
 import com.taetae98.http.base.BaseFragment
 import com.taetae98.http.databinding.FragmentUrlConnectionBinding
 import com.taetae98.http.singleton.Server
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.concurrent.thread
@@ -96,13 +97,13 @@ class URLConnectionFragment : BaseFragment<FragmentUrlConnectionBinding>(R.layou
                 try {
                     inputStream.bufferedReader().use {
                         val result = it.readText()
-                        Handler(Looper.getMainLooper()).post {
+                        CoroutineScope(Dispatchers.Main).launch {
                             binding.resultTextView.text = result
                         }
                     }
                 } catch (e: Exception) {
                     val result = "${this.responseCode} : $responseMessage"
-                    Handler(Looper.getMainLooper()).post {
+                    CoroutineScope(Dispatchers.Main).launch {
                         binding.resultTextView.text = result
                     }
                 }
@@ -129,13 +130,13 @@ class URLConnectionFragment : BaseFragment<FragmentUrlConnectionBinding>(R.layou
                 try {
                     inputStream.bufferedReader().use {
                         val result = it.readText()
-                        Handler(Looper.getMainLooper()).post {
+                        CoroutineScope(Dispatchers.Main).launch {
                             binding.resultTextView.text = result
                         }
                     }
                 } catch (e: Exception) {
                     val result = "${this.responseCode} : $responseMessage"
-                    Handler(Looper.getMainLooper()).post {
+                    CoroutineScope(Dispatchers.Main).launch {
                         binding.resultTextView.text = result
                     }
                 }
@@ -163,13 +164,13 @@ class URLConnectionFragment : BaseFragment<FragmentUrlConnectionBinding>(R.layou
                 try {
                     inputStream.bufferedReader().use {
                         val result = it.readText()
-                        Handler(Looper.getMainLooper()).post {
+                        CoroutineScope(Dispatchers.Main).launch {
                             binding.resultTextView.text = result
                         }
                     }
                 } catch (e: Exception) {
                     val result = "${this.responseCode} : $responseMessage"
-                    Handler(Looper.getMainLooper()).post {
+                    CoroutineScope(Dispatchers.Main).launch {
                         binding.resultTextView.text = result
                     }
                 }

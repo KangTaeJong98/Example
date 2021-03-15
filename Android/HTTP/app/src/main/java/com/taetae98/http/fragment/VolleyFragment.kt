@@ -199,14 +199,6 @@ class VolleyFragment : BaseFragment<FragmentVolleyBinding>(R.layout.fragment_vol
                 binding.resultTextView.text = jsonObject.toString()
             }
         }
-
-
-//        thread {
-//            val jsonObject = requestFuture.get()
-//            Handler(Looper.getMainLooper()).post {
-//                binding.resultTextView.text = jsonObject.toString()
-//            }
-//        }
     }
 
     private fun getParameter(): String {

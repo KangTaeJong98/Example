@@ -4,11 +4,13 @@ import com.taetae98.http.dto.RequestResult
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
 object RetrofitBuilder {
     val retrofit: RetrofitHTTP = Retrofit.Builder()
         .baseUrl("${Server.PROTOCOL}://${Server.IP}:${Server.PORT}")
+        .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(RetrofitHTTP::class.java)
