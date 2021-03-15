@@ -65,15 +65,32 @@ class RetrofitFragment : BaseFragment<FragmentRetrofitBinding>(R.layout.fragment
                 "application/x-www-form-urlencoded" -> {
                     when (selectedMethod) {
                         "GET" -> {
-                            RetrofitBuilder.retrofit.getUrlencoded(parameter1, parameter2).enqueue(object : Callback<RequestResult> {
-                                override fun onResponse(call: Call<RequestResult>, response: Response<RequestResult>) {
-                                    binding.resultTextView.text = response.body()?.toString()
-                                }
+//                            비동기
+//                            RetrofitBuilder.retrofit.getUrlencoded(parameter1, parameter2).enqueue(object : Callback<RequestResult> {
+//                                override fun onResponse(call: Call<RequestResult>, response: Response<RequestResult>) {
+//                                    if (response.isSuccessful) {
+//                                        binding.resultTextView.text = response.body()?.toString()
+//                                    } else {
+//                                        binding.resultTextView.text = response.errorBody()?.toString()
+//                                    }
+//                                }
+//
+//                                override fun onFailure(call: Call<RequestResult>, t: Throwable) {
+//                                    binding.resultTextView.text = t.toString()
+//                                }
+//                            })
 
-                                override fun onFailure(call: Call<RequestResult>, t: Throwable) {
-                                    binding.resultTextView.text = t.toString()
-                                }
-                            })
+//                            동기
+//                            thread {
+//                                val response = RetrofitBuilder.retrofit.getUrlencoded(parameter1, parameter2).execute()
+//                                CoroutineScope(Dispatchers.Main).launch {
+//                                    if (response.isSuccessful) {
+//                                        binding.resultTextView.text = response.body()?.toString()
+//                                    } else {
+//                                        binding.resultTextView.text = response.errorBody()?.toString()
+//                                    }
+//                                }
+//                            }
                         }
 
                         "POST" -> {
