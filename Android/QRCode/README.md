@@ -1,4 +1,4 @@
-# CoordinatorLayout 예제
+# QR Code 예제
 
 ## ⚡ Features
 * Generate : zxing 오픈소스를 이용하여 QR Code를 만들 수 있고, ISO 8859-1 코드를 사용하여 한국어도 지원합니다. (https://rkdxowhd98.tistory.com/142)
