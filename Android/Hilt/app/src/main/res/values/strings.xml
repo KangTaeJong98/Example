@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Hilt</string>
+    <string name="add">Add</string>
+    <string name="main">Main</string>
+    <string name="name">Name</string>
+    <string name="memo">Memo</string>
+    <string name="ok">OK</string>
+    <string name="profile_icon">Profile Icon</string>
+    <string name="solo">Solo</string>
+    <string name="team">Team</string>
 </resources>

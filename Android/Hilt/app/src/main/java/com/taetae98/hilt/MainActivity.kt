@@ -1,11 +1,8 @@
 package com.taetae98.hilt
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.taetae98.hilt.base.BaseActivity
+import com.taetae98.hilt.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main)
