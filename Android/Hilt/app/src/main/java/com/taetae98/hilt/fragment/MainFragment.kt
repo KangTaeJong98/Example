@@ -14,6 +14,8 @@ import com.taetae98.hilt.database.SummonerEntityRepository
 import com.taetae98.hilt.databinding.FragmentMainBinding
 import com.taetae98.hilt.utility.GridSpacingItemDecoration
 import com.taetae98.hilt.viewmodel.SummonerEntityViewModel
+import com.taetae98.hilt.qualifier.DataSource
+import com.taetae98.hilt.qualifier.LocalDatabase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -24,6 +26,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     @Inject
     lateinit var summonerInformationAdapter: SummonerInformationAdapter
+
+    @Inject
+    @LocalDatabase
+    lateinit var database: DataSource
 
     private val summonerEntityViewModel by viewModels<SummonerEntityViewModel>()
 

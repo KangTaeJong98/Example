@@ -2,6 +2,12 @@ package com.taetae98.lifecycle
 
 import android.os.SystemClock
 import androidx.activity.viewModels
+import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.taetae98.lifecycle.adapter.RecordAdapter
 import com.taetae98.lifecycle.base.BaseActivity
 import com.taetae98.lifecycle.data.Record
@@ -9,137 +15,46 @@ import com.taetae98.lifecycle.databinding.ActivityMainBinding
 import com.taetae98.lifecycle.model.ChronometerViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
-//    생성자가 필요한 ViewModel을 사용하는 코드. (ViewModelProvider.Factory를 사용하면 된다.)
-//    private val model by lazy { ViewModelProvider(this, ChronometerViewModelFactory(3000L)).get(ChronometerViewModel::class.java) }
-//    private val model by viewModels<ChronometerViewModel> { ChronometerViewModelFactory(3000L) }
-
-
-//    생성자가 필요없는 ViewModel을 사용하는 코드
-//    private val model by lazy { ViewModelProvider(this).get(ChronometerViewModel::class.java) }
-    private val model by viewModels<ChronometerViewModel>()
-    private val recordAdapter by lazy { RecordAdapter() }
-
-    private fun onResetChronometer() {
-        model.state.value = ChronometerViewModel.State.RESET
-        model.sumOfTickTime = 0L
-        binding.chronometer.base = SystemClock.elapsedRealtime()
-
-        val count = model.recordList.size
-        model.recordList.clear()
-        recordAdapter.notifyItemRangeRemoved(0, count)
+    private val navController by lazy {
+        (supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment).navController
     }
 
-    private fun onStartChronometer() {
-        model.state.value = ChronometerViewModel.State.START
-
-        val tickTime = SystemClock.elapsedRealtime()
-        model.lastTickTime = tickTime
-        binding.chronometer.base = SystemClock.elapsedRealtime() - model.sumOfTickTime
-
-        onRunChronometer()
-    }
-
-    private fun onRunChronometer() {
-        model.state.value = ChronometerViewModel.State.RUN
-    }
-
-    private fun onResumeChronometer() {
-        model.state.value = ChronometerViewModel.State.RESUME
-
-        val tickTime = SystemClock.elapsedRealtime()
-        model.lastTickTime = tickTime
-        binding.chronometer.base = SystemClock.elapsedRealtime() - model.sumOfTickTime
-
-        onRunChronometer()
-    }
-
-    private fun onStopChronometer() {
-        model.state.value = ChronometerViewModel.State.STOP
-        binding.chronometer.base = SystemClock.elapsedRealtime() - model.sumOfTickTime
+    private val appBarConfiguration by lazy {
+        AppBarConfiguration(
+            setOf(
+                R.id.chronometerFragment, R.id.counterFragment, R.id.coroutineFragment
+            ),
+            binding.drawerLayout
+        )
     }
 
     override fun init() {
         super.init()
-        initChronometer()
-        initViewModel()
-        initStartButton()
-        initStopButton()
-        initResumeButton()
-        initResetButton()
-        initRecordButton()
-        initRecyclerView()
+        initNavigationView()
     }
 
-    private fun initViewModel() {
-        with(model) {
-            state.observe(this@MainActivity) {
-                binding.state = it
-                when(it ?: ChronometerViewModel.State.RESET) {
-                    ChronometerViewModel.State.RUN -> {
-                        binding.chronometer.start()
-                    }
-                    ChronometerViewModel.State.RESET -> {
-                        binding.chronometer.stop()
-                    }
-                    ChronometerViewModel.State.STOP -> {
-                        binding.chronometer.stop()
-                    }
-                    else -> {
+    private fun initNavigationView() {
+        with(binding) {
+            navigation.setupWithNavController(navController)
+        }
+    }
 
-                    }
-                }
+    override fun setSupportActionBar(toolbar: Toolbar?) {
+        super.setSupportActionBar(toolbar)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        with(binding) {
+            if (drawerLayout.isDrawerOpen(navigation)) {
+                drawerLayout.closeDrawer(navigation)
+            } else {
+                super.onBackPressed()
             }
-        }
-    }
-
-    private fun initChronometer() {
-        with(binding.chronometer) {
-            base = SystemClock.elapsedRealtime() - model.sumOfTickTime
-            setOnChronometerTickListener {
-                val tickTime = SystemClock.elapsedRealtime()
-                model.sumOfTickTime += tickTime - model.lastTickTime
-                model.lastTickTime = tickTime
-            }
-        }
-    }
-
-    private fun initResetButton() {
-        binding.setOnReset {
-            onResetChronometer()
-        }
-    }
-
-    private fun initStartButton() {
-        binding.setOnStart {
-            onStartChronometer()
-        }
-    }
-
-    private fun initStopButton() {
-        binding.setOnStop {
-            onStopChronometer()
-        }
-    }
-
-    private fun initResumeButton() {
-        binding.setOnResume {
-            onResumeChronometer()
-        }
-    }
-
-    private fun initRecordButton() {
-        binding.setOnRecord {
-            with(model) {
-                recordList.add(Record(recordList.size.toLong(), sumOfTickTime))
-                recordAdapter.notifyItemInserted(recordList.size - 1)
-            }
-        }
-    }
-
-    private fun initRecyclerView() {
-        with(binding.recyclerView) {
-            adapter = recordAdapter
-            recordAdapter.submitList(model.recordList)
         }
     }
 }

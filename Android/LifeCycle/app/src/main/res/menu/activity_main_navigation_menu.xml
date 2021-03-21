@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/chronometerFragment"
+        android:title="@string/chronometer" />
+
+    <item
+        android:id="@+id/counterFragment"
+        android:title="@string/counter" />
+
+    <item
+        android:id="@+id/coroutineFragment"
+        android:title="@string/coroutine" />
+</menu>

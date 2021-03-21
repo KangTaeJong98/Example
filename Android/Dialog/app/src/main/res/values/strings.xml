@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Dialog</string>
+    <string name="date_picker">Date Picker</string>
+    <string name="time_picker">Time Picker</string>
+    <string name="alert">Alert</string>
+    <string name="select_alert">Select Alert</string>
+    <string name="radio_alert">Radio Alert</string>
+    <string name="checkbox_alert">Checkbox Alert</string>
+    <string name="custom_alert">Custom Alert</string>
+    <string name="checkbox_dialog">Custom Dialog</string>
+    <string name="image">Image</string>
+</resources>

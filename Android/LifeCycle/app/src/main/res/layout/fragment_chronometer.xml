@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="state"
+            type="com.taetae98.lifecycle.model.ChronometerViewModel.State" />
+
+        <variable
+            name="onStart"
+            type="View.OnClickListener" />
+
+        <variable
+            name="onStop"
+            type="View.OnClickListener" />
+
+        <variable
+            name="onRecord"
+            type="View.OnClickListener" />
+
+        <variable
+            name="onResume"
+            type="View.OnClickListener" />
+
+        <variable
+            name="onReset"
+            type="View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textAlignment="gravity"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/chronometer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/button_frame"/>
+
+        <FrameLayout
+            app:frame="@{state}"
+            android:id="@+id/button_frame"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:id="@+id/reset_frame"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E2E2E2"
+                    android:backgroundTintMode="screen"
+                    android:onClick="@{onStart}"
+                    android:shadowRadius="@dimen/material_emphasis_disabled"
+                    android:text="@string/start"
+                    android:textColor="@color/black"
+                    app:cornerRadius="30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/run_frame"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E2E2E2"
+                    android:backgroundTintMode="screen"
+                    android:onClick="@{onStop}"
+                    android:shadowRadius="@dimen/material_emphasis_disabled"
+                    android:text="@string/stop"
+                    android:textColor="@color/black"
+                    app:cornerRadius="30dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E2E2E2"
+                    android:backgroundTintMode="screen"
+                    android:onClick="@{onRecord}"
+                    android:shadowRadius="@dimen/material_emphasis_disabled"
+                    android:text="@string/record"
+                    android:textColor="@color/black"
+                    app:cornerRadius="30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/stop_frame"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E2E2E2"
+                    android:backgroundTintMode="screen"
+                    android:onClick="@{onResume}"
+                    android:shadowRadius="@dimen/material_emphasis_disabled"
+                    android:text="@string/resume"
+                    android:textColor="@color/black"
+                    app:cornerRadius="30dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E2E2E2"
+                    android:backgroundTintMode="screen"
+                    android:onClick="@{onReset}"
+                    android:shadowRadius="@dimen/material_emphasis_disabled"
+                    android:text="@string/reset"
+                    android:textColor="@color/black"
+                    app:cornerRadius="30dp" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

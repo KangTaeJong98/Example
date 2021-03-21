@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onCount"
+            type="OnClickListener" />
+
+        <variable
+            name="onReset"
+            type="OnClickListener" />
+
+        <variable
+            name="count"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:text="@{count.toString(), default=0}"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:text="10"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#E2E2E2"
+                android:backgroundTintMode="screen"
+                android:onClick="@{onCount}"
+                android:shadowRadius="@dimen/material_emphasis_disabled"
+                android:text="@string/counter"
+                android:textColor="@color/black"
+                app:cornerRadius="30dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="65dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#E2E2E2"
+                android:backgroundTintMode="screen"
+                android:onClick="@{onReset}"
+                android:shadowRadius="@dimen/material_emphasis_disabled"
+                android:text="@string/reset"
+                android:textColor="@color/black"
+                app:cornerRadius="30dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

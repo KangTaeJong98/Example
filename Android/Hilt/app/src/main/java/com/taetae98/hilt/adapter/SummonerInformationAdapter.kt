@@ -13,7 +13,6 @@ import javax.inject.Inject
 @FragmentScoped
 class SummonerInformationAdapter @Inject constructor() : BaseAdapter<SummonerInformation>(SummonerInformationItemCallback()) {
     init {
-        Log.d("PASS", "Adapter Constructor")
         setHasStableIds(true)
     }
 

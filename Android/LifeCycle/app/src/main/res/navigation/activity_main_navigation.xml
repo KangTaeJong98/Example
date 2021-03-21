@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_navigation.xml"
+    app:startDestination="@id/chronometerFragment">
+
+    <fragment
+        android:id="@+id/chronometerFragment"
+        android:name="com.taetae98.lifecycle.fragment.ChronometerFragment"
+        android:label="@string/chronometer"
+        tools:layout="@layout/fragment_chronometer"/>
+    <fragment
+        android:id="@+id/counterFragment"
+        android:name="com.taetae98.lifecycle.fragment.CounterFragment"
+        android:label="@string/counter"
+        tools:layout="@layout/fragment_counter"/>
+    <fragment
+        android:id="@+id/coroutineFragment"
+        android:name="com.taetae98.lifecycle.fragment.CoroutineFragment"
+        android:label="CoroutineFragment"
+        tools:layout="@layout/fragment_coroutine">
+        <action
+            android:id="@+id/action_coroutineFragment_to_coroutineNextFragment"
+            app:destination="@id/coroutineNextFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coroutineNextFragment"
+        android:name="com.taetae98.lifecycle.fragment.CoroutineNextFragment"
+        android:label="CoroutineNextFragment"
+        tools:layout="@layout/fragment_coroutine_next"/>
+</navigation>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="result"
+            type="String" />
+
+        <variable
+            name="onDatePicker"
+            type="OnClickListener" />
+
+        <variable
+            name="onTimePicker"
+            type="OnClickListener" />
+
+        <variable
+            name="onAlert"
+            type="OnClickListener" />
+
+        <variable
+            name="onSelectAlert"
+            type="OnClickListener" />
+
+        <variable
+            name="onRadioAlert"
+            type="OnClickListener" />
+
+        <variable
+            name="onCheckBoxAlert"
+            type="OnClickListener" />
+
+        <variable
+            name="onCustomAlert"
+            type="OnClickListener" />
+
+        <variable
+            name="onCustomDialog"
+            type="OnClickListener" />
+    </data>
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/date_picker_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onDatePicker}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/date_picker"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/time_picker_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onTimePicker}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/time_picker"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/date_picker_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/alert_dialog_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onAlert}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/alert"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/time_picker_dialog" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/select_alert_dialog_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onSelectAlert}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/select_alert"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/alert_dialog_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/radio_alert_dialog_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onRadioAlert}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/radio_alert"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/select_alert_dialog_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/checkbox_alert_dialog_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onCheckBoxAlert}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/checkbox_alert"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radio_alert_dialog_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/custom_alert_dialog_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onCustomAlert}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/custom_alert"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/checkbox_alert_dialog_button" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/custom_dialog_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:onClick="@{onCustomDialog}"
+                android:paddingTop="13dp"
+                android:paddingBottom="13dp"
+                android:text="@string/checkbox_dialog"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/custom_alert_dialog_button" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@{result}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/custom_dialog_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Result"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
