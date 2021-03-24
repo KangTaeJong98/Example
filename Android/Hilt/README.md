@@ -18,7 +18,7 @@
 
 ### SummonerEntityViewModel
 * #### @HiltViewModel을 통한 ViewModel Injection
-```
+```Kotlin
 @HiltViewModel
 class SummonerEntityViewModel @Inject constructor(
     summonerEntityRepository: SummonerEntityRepository,
