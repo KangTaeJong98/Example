@@ -7,57 +7,49 @@ import androidx.lifecycle.whenResumed
 import androidx.lifecycle.whenStarted
 import androidx.navigation.fragment.findNavController
 import com.taetae98.lifecycle.R
+import com.taetae98.lifecycle.adapter.LogAdapter
 import com.taetae98.lifecycle.base.BaseFragment
 import com.taetae98.lifecycle.databinding.FragmentCoroutineBinding
-import com.taetae98.lifecycle.databinding.FragmentCounterBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 
 class CoroutineFragment : BaseFragment<FragmentCoroutineBinding>(R.layout.fragment_coroutine) {
     private var count = 0
+    private val logList by lazy { ArrayList<String>() }
+    private val logAdapter by lazy { LogAdapter().apply { submitList(logList) } }
 
     override fun init() {
         initCoroutine()
         initSupportActionbar()
-        initOnNext()
+        initRecyclerView()
+        initOnNavigate()
     }
 
     private fun initCoroutine() {
         viewLifecycleOwner.lifecycleScope.launch {
             whenCreated {
-                Log.d("PASS", "launch - launchWhenCreated ${count++}")
-                delay(1000L)
+                writeLog("${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())} launch - launchWhenCreated")
             }
-            Log.d("PASS", "Next whenCreated")
             whenStarted {
-                Log.d("PASS", "launch - launchWhenStarted ${count++}")
-                delay(1000L)
+                writeLog("${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())} launch - launchWhenStarted")
             }
-            Log.d("PASS", "Next whenStarted")
             whenResumed {
-                Log.d("PASS", "launch - launchWhenResumed ${count++}")
-                delay(1000L)
+                writeLog("${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())} launch - launchWhenResumed")
             }
-            Log.d("PASS", "Next whenResumed")
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            while (true) {
-                Log.d("PASS", "launchWhenCreated ${count++}")
-                delay(1000L)
-            }
+            writeLog("${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())} launch - launchWhenCreated(${count++})")
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            while (true) {
-                Log.d("PASS", "launchWhenStarted ${count++}")
-                delay(1000L)
-            }
+            writeLog("${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())} launch - launchWhenStarted(${count++})")
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenResumed {
             while (true) {
-                Log.d("PASS", "launchWhenResumed ${count++}")
+                writeLog("${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())} launch - launchWhenResumed(${count++})")
                 delay(1000L)
             }
         }
@@ -67,9 +59,21 @@ class CoroutineFragment : BaseFragment<FragmentCoroutineBinding>(R.layout.fragme
         setSupportActionBar(binding.toolbar)
     }
 
-    private fun initOnNext() {
-        binding.setOnNext {
+    private fun initRecyclerView() {
+        with(binding.recyclerView) {
+            adapter = logAdapter
+        }
+    }
+
+    private fun initOnNavigate() {
+        binding.setOnNavigate {
             findNavController().navigate(CoroutineFragmentDirections.actionCoroutineFragmentToCoroutineNextFragment())
         }
+    }
+
+    private fun writeLog(log: String) {
+        logList.add(log)
+        logAdapter.notifyItemInserted(logList.lastIndex)
+        binding.recyclerView.scrollToPosition(logList.lastIndex)
     }
 }
