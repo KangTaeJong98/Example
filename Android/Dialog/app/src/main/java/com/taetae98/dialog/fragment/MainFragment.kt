@@ -5,11 +5,11 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.taetae98.dialog.R
 import com.taetae98.dialog.base.BaseFragment
 import com.taetae98.dialog.databinding.FragmentMainBinding
 import com.taetae98.dialog.databinding.LayoutCustomAlertBinding
+import com.taetae98.dialog.dialog.CustomDialog
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -146,7 +146,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     private fun initOnCustomDialog() {
         binding.setOnCustomDialog {
-            findNavController().navigate(MainFragmentDirections.actionMainFragmentToCustomDialog())
+//            findNavController().navigate(MainFragmentDirections.actionMainFragmentToCustomDialog())
+            CustomDialog().show(parentFragmentManager, "")
         }
     }
 }

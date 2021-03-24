@@ -14,7 +14,7 @@
             android:id="@+id/action_mainFragment_to_customDialog"
             app:destination="@id/customDialog" />
     </fragment>
-    
+
     <dialog
         android:id="@+id/customDialog"
         android:name="com.taetae98.dialog.dialog.CustomDialog"
