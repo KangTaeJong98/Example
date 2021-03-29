@@ -6,12 +6,14 @@ import android.view.*
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.taetae98.datastore.R
+import com.taetae98.datastore.accountStore
 import com.taetae98.datastore.base.BaseFragment
 import com.taetae98.datastore.databinding.FragmentQrBinding
-import com.taetae98.datastore.singleton.Account
 import com.taetae98.datastore.singleton.LoginDataStore
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
@@ -20,9 +22,6 @@ class QRFragment : BaseFragment<FragmentQrBinding>(R.layout.fragment_qr) {
     init {
         setHasOptionsMenu(true)
     }
-
-    @Inject
-    lateinit var account: Account
 
     @Inject
     lateinit var loginDataStore: LoginDataStore
@@ -73,7 +72,12 @@ class QRFragment : BaseFragment<FragmentQrBinding>(R.layout.fragment_qr) {
 
     @SuppressLint("SimpleDateFormat")
     private fun refresh() {
-        binding.qrCode = "m${account.studentId}${SimpleDateFormat("yyyyMMddHHmmss").format(System.currentTimeMillis())}"
-        binding.lastUpdated = "Last Updated : ${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())}"
+        CoroutineScope(Dispatchers.IO).launch {
+            val studentId = requireContext().accountStore.data.map { it.studentId }.first()
+            withContext(Dispatchers.Main) {
+                binding.qrCode = "m$studentId${SimpleDateFormat("yyyyMMddHHmmss").format(System.currentTimeMillis())}"
+                binding.lastUpdated = "Last Updated : ${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())}"
+            }
+        }
     }
 }

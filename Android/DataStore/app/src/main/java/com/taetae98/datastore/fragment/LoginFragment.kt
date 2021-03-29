@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.taetae98.datastore.R
+import com.taetae98.datastore.accountStore
 import com.taetae98.datastore.api.SmartGachonAPI
 import com.taetae98.datastore.base.BaseFragment
 import com.taetae98.datastore.databinding.FragmentLoginBinding
@@ -15,14 +16,14 @@ import com.taetae98.datastore.dialog.ProgressDialog
 import com.taetae98.datastore.dto.InformationBody
 import com.taetae98.datastore.dto.LoginBody
 import com.taetae98.datastore.dto.SmartGachonMessage
-import com.taetae98.datastore.singleton.Account
 import com.taetae98.datastore.singleton.LoginDataStore
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
-import kotlin.concurrent.thread
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login) {
@@ -31,9 +32,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
 
     @Inject
     lateinit var loginDataStore: LoginDataStore
-
-    @Inject
-    lateinit var account: Account
 
     private fun onLogin(id: String, password: String, isAutoLoginChecked: Boolean) {
         val dialog = ProgressDialog().also {
@@ -75,17 +73,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     }
 
     private fun onInformation(id: String) {
-        thread {
+        runBlocking(Dispatchers.IO) {
             api.information(InformationBody(id)).execute().body()?.let { message ->
                 val information = message.information.first()
-                with(account) {
-                    department = information.department
-                    name = information.name
-                    phone = information.phone
-                    studentId = information.studentId
+                requireContext().accountStore.updateData {
+                    it.toBuilder()
+                        .setDepartment(information.department)
+                        .setName(information.name)
+                        .setPhone(information.phone)
+                        .setStudentId(information.studentId)
+                        .build()
                 }
             }
-        }.join()
+        }
     }
 
     override fun onAttach(context: Context) {
