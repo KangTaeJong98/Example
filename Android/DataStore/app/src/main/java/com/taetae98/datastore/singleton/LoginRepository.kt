@@ -1,10 +1,10 @@
 package com.taetae98.datastore.singleton
 
-import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.taetae98.datastore.loginStore
-import dagger.hilt.android.qualifiers.ApplicationContext
+import com.taetae98.datastore.di.LoginDataStore
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -13,21 +13,25 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LoginDataStore @Inject constructor(@ApplicationContext private val context: Context) {
+class LoginRepository @Inject constructor() {
     private val idKey by lazy { stringPreferencesKey("id") }
     private val passwordKey by lazy { stringPreferencesKey("password") }
+
+    @Inject
+    @LoginDataStore
+    lateinit var dataStore: DataStore<Preferences>
 
     var id: String
         get() {
             return runBlocking(Dispatchers.IO) {
-                context.loginStore.data.map {
+                dataStore.data.map {
                     it[idKey] ?: ""
                 }.first()
             }
         }
         set(value) {
             runBlocking(Dispatchers.IO) {
-                context.loginStore.edit {
+                dataStore.edit {
                     it[idKey] = value
                 }
             }
@@ -36,14 +40,14 @@ class LoginDataStore @Inject constructor(@ApplicationContext private val context
     var password: String
         get() {
             return runBlocking(Dispatchers.IO) {
-                context.loginStore.data.map {
+                dataStore.data.map {
                     it[passwordKey] ?: ""
                 }.first()
             }
         }
         set(value) {
             runBlocking(Dispatchers.IO) {
-                context.loginStore.edit {
+                dataStore.edit {
                     it[passwordKey] = value
                 }
             }

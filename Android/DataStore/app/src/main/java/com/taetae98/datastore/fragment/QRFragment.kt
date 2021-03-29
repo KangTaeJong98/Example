@@ -6,14 +6,13 @@ import android.view.*
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.taetae98.datastore.R
-import com.taetae98.datastore.accountStore
 import com.taetae98.datastore.base.BaseFragment
 import com.taetae98.datastore.databinding.FragmentQrBinding
-import com.taetae98.datastore.singleton.LoginDataStore
+import com.taetae98.datastore.singleton.AccountRepository
+import com.taetae98.datastore.singleton.LoginRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
@@ -24,7 +23,10 @@ class QRFragment : BaseFragment<FragmentQrBinding>(R.layout.fragment_qr) {
     }
 
     @Inject
-    lateinit var loginDataStore: LoginDataStore
+    lateinit var loginRepository: LoginRepository
+
+    @Inject
+    lateinit var accountRepository: AccountRepository
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -34,8 +36,8 @@ class QRFragment : BaseFragment<FragmentQrBinding>(R.layout.fragment_qr) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.logout -> {
-                loginDataStore.id = ""
-                loginDataStore.password = ""
+                loginRepository.id = ""
+                loginRepository.password = ""
                 findNavController().navigateUp()
             }
         }
@@ -73,10 +75,10 @@ class QRFragment : BaseFragment<FragmentQrBinding>(R.layout.fragment_qr) {
     @SuppressLint("SimpleDateFormat")
     private fun refresh() {
         CoroutineScope(Dispatchers.IO).launch {
-            val studentId = requireContext().accountStore.data.map { it.studentId }.first()
+            val studentId = accountRepository.studentId.first()
             withContext(Dispatchers.Main) {
                 binding.qrCode = "m$studentId${SimpleDateFormat("yyyyMMddHHmmss").format(System.currentTimeMillis())}"
-                binding.lastUpdated = "Last Updated : ${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())}"
+                binding.lastUpdated = "Last Updated : ${SimpleDateFormat.getTimeInstance().format(System.currentTimeMillis())}\n${binding.qrCode}"
             }
         }
     }

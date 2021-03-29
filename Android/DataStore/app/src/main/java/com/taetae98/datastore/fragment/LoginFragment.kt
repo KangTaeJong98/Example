@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.taetae98.datastore.R
-import com.taetae98.datastore.accountStore
 import com.taetae98.datastore.api.SmartGachonAPI
 import com.taetae98.datastore.base.BaseFragment
 import com.taetae98.datastore.databinding.FragmentLoginBinding
@@ -16,7 +15,8 @@ import com.taetae98.datastore.dialog.ProgressDialog
 import com.taetae98.datastore.dto.InformationBody
 import com.taetae98.datastore.dto.LoginBody
 import com.taetae98.datastore.dto.SmartGachonMessage
-import com.taetae98.datastore.singleton.LoginDataStore
+import com.taetae98.datastore.singleton.AccountRepository
+import com.taetae98.datastore.singleton.LoginRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -31,7 +31,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     lateinit var api: SmartGachonAPI
 
     @Inject
-    lateinit var loginDataStore: LoginDataStore
+    lateinit var loginRepository: LoginRepository
+
+    @Inject
+    lateinit var accountRepository: AccountRepository
 
     private fun onLogin(id: String, password: String, isAutoLoginChecked: Boolean) {
         val dialog = ProgressDialog().also {
@@ -44,11 +47,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
                     when(message.code) {
                         "0" -> {
                             if (isAutoLoginChecked) {
-                                loginDataStore.id = id
-                                loginDataStore.password = password
+                                loginRepository.id = id
+                                loginRepository.password = password
                             } else {
-                                loginDataStore.id = ""
-                                loginDataStore.password = ""
+                                loginRepository.id = ""
+                                loginRepository.password = ""
                             }
                             onInformation(id)
                             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToQRFragment())
@@ -76,22 +79,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         runBlocking(Dispatchers.IO) {
             api.information(InformationBody(id)).execute().body()?.let { message ->
                 val information = message.information.first()
-                requireContext().accountStore.updateData {
-                    it.toBuilder()
-                        .setDepartment(information.department)
-                        .setName(information.name)
-                        .setPhone(information.phone)
-                        .setStudentId(information.studentId)
-                        .build()
-                }
+                accountRepository.set(information)
             }
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (loginDataStore.id.isNotBlank() && loginDataStore.password.isNotBlank()) {
-            onLogin(loginDataStore.id, loginDataStore.password, true)
+        if (loginRepository.id.isNotBlank() && loginRepository.password.isNotBlank()) {
+            onLogin(loginRepository.id, loginRepository.password, true)
         }
     }
 
