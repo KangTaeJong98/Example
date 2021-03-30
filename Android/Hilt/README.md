@@ -9,6 +9,8 @@
 
 * Hilt Componet : Hilt Component 구조와 Component의 생명주기 (https://rkdxowhd98.tistory.com/145)
 
+* EntryPoint : Hilt에서 제공하지 않는 Class에 DI를 적용하는 방법 (https://rkdxowhd98.tistory.com/149)
+
 
 ## 😊 Introduction
 ### MainFragment
