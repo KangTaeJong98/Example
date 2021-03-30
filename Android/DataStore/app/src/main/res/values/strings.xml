@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DataStore</string>
+    <string name="logo">Logo</string>
+    <string name="id">ID</string>
+    <string name="password">Password</string>
+    <string name="auto_login">Auto Login</string>
+    <string name="login">Login</string>
+    <string name="qr">QR</string>
+    <string name="invalid_account">Invalid Account</string>
+    <string name="qr_code">QR Code</string>
+    <string name="refresh">Refresh</string>
+    <string name="click_to_refresh">Click to refresh.</string>
+    <string name="logout">Logout</string>
+</resources>

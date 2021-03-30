@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.taetae98.datastore";
+option java_multiple_files = true;
+
+message Account {
+  string department = 1;
+  string studentId = 2;
+  string name = 3;
+  string phone = 4;
+}

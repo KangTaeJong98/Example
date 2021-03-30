@@ -20,6 +20,6 @@
     <fragment
         android:id="@+id/QRFragment"
         android:name="com.taetae98.datastore.fragment.QRFragment"
-        android:label="QRFragment"
+        android:label="@string/qr"
         tools:layout="@layout/fragment_qr"/>
 </navigation>

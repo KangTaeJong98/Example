@@ -3,7 +3,6 @@ package com.taetae98.datastore.fragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.taetae98.datastore.R
 import com.taetae98.datastore.base.BaseFragment
@@ -11,8 +10,11 @@ import com.taetae98.datastore.databinding.FragmentQrBinding
 import com.taetae98.datastore.singleton.AccountRepository
 import com.taetae98.datastore.singleton.LoginRepository
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import javax.inject.Inject
 
@@ -49,7 +51,8 @@ class QRFragment : BaseFragment<FragmentQrBinding>(R.layout.fragment_qr) {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         onCreateSupportActionBar()
         onCreateOnRefresh()
-        onCreateRefreshCoroutine()
+
+        refresh()
         return view
     }
 
@@ -60,15 +63,6 @@ class QRFragment : BaseFragment<FragmentQrBinding>(R.layout.fragment_qr) {
     private fun onCreateOnRefresh() {
         binding.setOnRefresh {
             refresh()
-        }
-    }
-
-    private fun onCreateRefreshCoroutine() {
-        lifecycleScope.launchWhenResumed {
-            while (true) {
-                refresh()
-                delay(10000L)
-            }
         }
     }
 
