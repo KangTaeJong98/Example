@@ -2,10 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/naverFragment"
-        android:title="@string/naver" />
+        android:id="@+id/AFragment"
+        android:title="@string/action" />
 
     <item
-        android:id="@+id/daumFragment"
-        android:title="@string/daum"/>
+        android:id="@+id/inputFragment"
+        android:title="@string/safe_args" />
+
+    <item
+        android:id="@+id/pendingFragment"
+        android:title="@string/deep_link" />
+
+    <item
+        android:id="@+id/UIFragment"
+        android:title="@string/ui" />
 </menu>

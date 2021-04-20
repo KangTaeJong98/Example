@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Navigation">
         <activity android:name=".activity.MainActivity">
+            <nav-graph
+                android:value="@navigation/activity_main_navigation" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

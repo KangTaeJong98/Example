@@ -10,7 +10,11 @@
         android:id="@+id/movieFragment"
         android:name="com.taetae98.databinding.fragment.MovieFragment"
         android:label="@string/movie"
-        tools:layout="@layout/fragment_movie"/>
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_movieFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/informationFragment"
@@ -25,4 +29,9 @@
     <action
         android:id="@+id/action_global_informationFragment"
         app:destination="@id/informationFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.taetae98.databinding.fragment.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search"/>
 </navigation>

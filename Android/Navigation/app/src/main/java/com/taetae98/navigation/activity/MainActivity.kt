@@ -1,7 +1,6 @@
 package com.taetae98.navigation.activity
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,8 +10,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.taetae98.navigation.R
 import com.taetae98.navigation.base.BaseActivity
 import com.taetae98.navigation.databinding.ActivityMainBinding
+import com.taetae98.navigation.utility.DataBinding
 
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity : BaseActivity(), DataBinding<ActivityMainBinding> {
+    override val binding: ActivityMainBinding by lazy { DataBinding.get(this, R.layout.activity_main)}
+
     private val navController by lazy {
         (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
     }
@@ -20,7 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val appBarConfiguration by lazy {
         AppBarConfiguration(
             setOf(
-                R.id.naverFragment, R.id.daumFragment
+                R.id.AFragment, R.id.inputFragment
             ),
             binding.drawerLayout
         )
@@ -28,7 +30,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        onCreateSupportActionButton()
         onCreateNavigationView()
+    }
+
+    private fun onCreateSupportActionButton() {
+        setSupportActionBar(binding.toolbar)
+    }
+
+    private fun onCreateNavigationView() {
+        binding.navigation.setupWithNavController(navController)
     }
 
     override fun onBackPressed() {
@@ -37,13 +48,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             if (drawerLayout.isDrawerOpen(navigation)) {
                 drawerLayout.closeDrawer(navigation)
             } else {
-                 navController.navigateUp()
+                navController.navigateUp()
             }
         }
-    }
-
-    private fun onCreateNavigationView() {
-        binding.navigation.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

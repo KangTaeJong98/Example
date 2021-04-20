@@ -3,16 +3,100 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_navigation"
-    app:startDestination="@id/naverFragment">
+    app:startDestination="@id/AFragment">
 
     <fragment
-        android:id="@+id/naverFragment"
-        android:name="com.taetae98.navigation.fragment.NaverFragment"
-        android:label="NaverFragment"
-        tools:layout="@layout/fragment_naver"/>
+        android:id="@+id/AFragment"
+        android:name="com.taetae98.navigation.fragment.AFragment"
+        android:label="A"
+        tools:layout="@layout/fragment_a" >
+        <action
+            android:id="@+id/action_AFragment_to_BFragment"
+            app:destination="@id/BFragment"
+            app:enterAnim="@anim/from_right_to_center"
+            app:exitAnim="@anim/from_center_to_left"
+            app:popEnterAnim="@anim/from_left_to_center"
+            app:popExitAnim="@anim/from_center_to_right" />
+    </fragment>
     <fragment
-        android:id="@+id/daumFragment"
-        android:name="com.taetae98.navigation.fragment.DaumFragment"
-        android:label="DaumFragment"
-        tools:layout="@layout/fragment_daum"/>
+        android:id="@+id/BFragment"
+        android:name="com.taetae98.navigation.fragment.BFragment"
+        android:label="B"
+        tools:layout="@layout/fragment_b" >
+        <action
+            android:id="@+id/action_BFragment_to_CFragment"
+            app:destination="@id/CFragment"
+            app:enterAnim="@anim/from_right_to_center"
+            app:exitAnim="@anim/from_center_to_left"
+            app:popEnterAnim="@anim/from_left_to_center"
+            app:popExitAnim="@anim/from_center_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/CFragment"
+        android:name="com.taetae98.navigation.fragment.CFragment"
+        android:label="C"
+        tools:layout="@layout/fragment_c" >
+        <action
+            android:id="@+id/action_CFragment_to_DFragment"
+            app:destination="@id/DFragment"
+            app:enterAnim="@anim/from_right_to_center"
+            app:exitAnim="@anim/from_center_to_left"
+            app:popEnterAnim="@anim/from_left_to_center"
+            app:popExitAnim="@anim/from_center_to_right"
+            app:popUpTo="@id/AFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/DFragment"
+        android:name="com.taetae98.navigation.fragment.DFragment"
+        android:label="D"
+        tools:layout="@layout/fragment_d"
+        app:enterAnim="@anim/from_right_to_center"
+        app:exitAnim="@anim/from_center_to_left"
+        app:popEnterAnim="@anim/from_left_to_center"
+        app:popExitAnim="@anim/from_center_to_right" />
+    <fragment
+        android:id="@+id/inputFragment"
+        android:name="com.taetae98.navigation.fragment.InputFragment"
+        android:label="Input"
+        tools:layout="@layout/fragment_input">
+        <action
+            android:id="@+id/action_inputFragment_to_outputFragment"
+            app:destination="@id/outputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/outputFragment"
+        android:name="com.taetae98.navigation.fragment.OutputFragment"
+        android:label="@string/safe_args"
+        tools:layout="@layout/fragment_out">
+        <argument
+            android:name="args"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/deepLinkFragment"
+        android:name="com.taetae98.navigation.fragment.DeepLinkFragment"
+        android:label="DeepLink"
+        tools:layout="@layout/fragment_deep_link">
+        <argument
+            android:name="arg"
+            app:argType="string"
+            app:nullable="true" />
+        <deepLink
+            android:id="@+id/deeplink"
+            app:uri="navigation://taetae98.com?arg={arg}" />
+    </fragment>
+    <fragment
+        android:id="@+id/pendingFragment"
+        android:name="com.taetae98.navigation.fragment.PendingFragment"
+        android:label="Pending"
+        tools:layout="@layout/fragment_pending_intent"/>
+    <fragment
+        android:id="@+id/UIFragment"
+        android:name="com.taetae98.navigation.fragment.UIFragment"
+        android:label="UIFragment" />
+
 </navigation>

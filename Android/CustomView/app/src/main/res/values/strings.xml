@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CustomView</string>
+    <string name="icon">Icon</string>
+    <string name="kakao">Kakao</string>
+    <string name="google">Google</string>
+</resources>

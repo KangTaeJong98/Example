@@ -2,4 +2,12 @@
     <string name="app_name">Navigation</string>
     <string name="naver">Naver</string>
     <string name="daum">Daum</string>
+    <string name="action">Action</string>
+    <string name="safe_args">Safe Args</string>
+    <string name="pending_intent">Pending Intent</string>
+    <string name="deep_link">Deep Link</string>
+    <string name="ui">UI</string>
+    <string name="call">Call</string>
+    <string name="message">Message</string>
+    <string name="phone_book">Phone Book</string>
 </resources>

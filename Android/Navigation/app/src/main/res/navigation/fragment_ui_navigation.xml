@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_ui_navigation"
+    app:startDestination="@id/callFragment">
+
+    <fragment
+        android:id="@+id/callFragment"
+        android:name="com.taetae98.navigation.fragment.CallFragment"
+        android:label="CallFragment"
+        tools:layout="@layout/fragment_call" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.taetae98.navigation.fragment.MessageFragment"
+        android:label="MessageFragment"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/phoneBookFragment"
+        android:name="com.taetae98.navigation.fragment.PhoneBookFragment"
+        android:label="PhoneBookFragment"
+        tools:layout="@layout/fragment_phone_book" />
+</navigation>
