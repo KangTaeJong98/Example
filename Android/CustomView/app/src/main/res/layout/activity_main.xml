@@ -4,15 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="androidx.lifecycle.LiveData" />
 
-        <variable
-            name="activity"
-            type="com.taetae98.customview.MainActivity" />
-
-        <variable
-            name="text"
-            type="LiveData" />
     </data>
 
     <LinearLayout
@@ -20,22 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.taetae98.customview.view.ProgressView
+            android:id="@+id/progress"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+
         <com.taetae98.customview.view.LoginButtonView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="20dp"
-            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="@color/white"
             app:icon="@drawable/ic_google"
             app:text="@string/google" />
 
         <com.taetae98.customview.view.LoginButtonView
-            android:layout_margin="20dp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             app:cardBackgroundColor="#FFEB00"
             app:icon="@drawable/ic_kakao"
             app:text="@string/kakao"
-            app:textColor="#3C1E1E"/>
-
+            app:textColor="#3C1E1E" />
     </LinearLayout>
 </layout>
