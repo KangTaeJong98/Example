@@ -13,7 +13,7 @@
 
 ## 😊 Introduction
 ### ScreenShot
-* #### ProgressView : Value에 따라 자동으로 Progress가 진행되도록 구현
+* #### ProgressView : Value에 따라 자동으로 Progress가 진행되도록 구현, XML에서 쉽게 Progress 설정할 수 있도록 구현
 * #### OverlapLayout : ChildView가 겹치면서 표현되도록 구현
 * #### LoginButtonView : XML에서 쉽게 icon, text, textColor, backgroundColor 등을 지정할 수 있도록 구현
 <img src="./readme/ScreenShot1.png" alt="ScreenShot1" width="30%"><img src="./readme/ScreenShot2.png" alt="ScreenShot2" width="30%">
