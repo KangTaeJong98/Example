@@ -4,13 +4,14 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.os.Parcelable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import com.taetae98.customview.R
 import kotlin.math.min
 
-class ProgressView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
+class ProgressView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0) : View(context, attrs, defStyleAttr, defStyleRes) {
     private val progressBarBackgroundPaint = Paint().apply {
         isAntiAlias = true
         style = Paint.Style.STROKE
@@ -88,11 +89,10 @@ class ProgressView(context: Context, attrs: AttributeSet? = null) : View(context
         set(value) {
             progressBarPaint.strokeWidth = value
             progressBarBackgroundPaint.strokeWidth = value
-            invalidate()
         }
 
     init {
-        context.theme.obtainStyledAttributes(attrs, R.styleable.ProgressView, 0, 0).apply {
+        context.theme.obtainStyledAttributes(attrs, R.styleable.ProgressView, defStyleAttr, defStyleRes).apply {
             maxValue = getInt(R.styleable.ProgressView_maxValue, maxValue)
             value = getInt(R.styleable.ProgressView_value, value)
             textSize = getDimension(R.styleable.ProgressView_textSize, textSize)
@@ -100,6 +100,7 @@ class ProgressView(context: Context, attrs: AttributeSet? = null) : View(context
             progressBarBackgroundColor = getColor(R.styleable.ProgressView_progressBarBackgroundColor, progressBarBackgroundColor)
             progressBarColor = getColor(R.styleable.ProgressView_progressBarColor, progressBarColor)
             progressBarWidth = getDimension(R.styleable.ProgressView_progressBarWidth, progressBarWidth)
+            recycle()
         }
     }
 
@@ -108,15 +109,16 @@ class ProgressView(context: Context, attrs: AttributeSet? = null) : View(context
         var h = MeasureSpec.getSize(heightMeasureSpec)
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
+
         when {
-            widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST -> {
+            (widthMode == MeasureSpec.AT_MOST || widthMode == MeasureSpec.UNSPECIFIED) && (heightMode == MeasureSpec.AT_MOST || heightMode == MeasureSpec.UNSPECIFIED) -> {
                 w = (100 * resources.displayMetrics.density + 0.5).toInt()
                 h = (100 * resources.displayMetrics.density + 0.5).toInt()
             }
-            widthMode == MeasureSpec.EXACTLY && heightMode == MeasureSpec.AT_MOST -> {
+            widthMode == MeasureSpec.EXACTLY && (heightMode == MeasureSpec.AT_MOST || heightMode == MeasureSpec.UNSPECIFIED) -> {
                 h = w
             }
-            widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.EXACTLY -> {
+            (widthMode == MeasureSpec.AT_MOST || widthMode == MeasureSpec.UNSPECIFIED) && heightMode == MeasureSpec.EXACTLY -> {
                 w = h
             }
         }

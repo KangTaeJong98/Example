@@ -1,12 +1,15 @@
 package com.taetae98.customview
 
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.taetae98.customview.databinding.ActivityMainBinding
 import com.taetae98.customview.utility.DataBinding
 import kotlinx.coroutines.CoroutineScope
@@ -27,6 +30,11 @@ class MainActivity : AppCompatActivity(), DataBinding<ActivityMainBinding> {
                 delay(1000L)
                 binding.progress.value += 1
             }
+
+            binding.overlap.addView(ImageView(this@MainActivity).apply {
+                setImageDrawable(ContextCompat.getDrawable(this@MainActivity, R.drawable.monkey))
+                adjustViewBounds = true
+            })
         }
     }
 

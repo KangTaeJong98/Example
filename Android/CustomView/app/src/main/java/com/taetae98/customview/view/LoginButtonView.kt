@@ -16,11 +16,12 @@ import com.taetae98.customview.R
 import com.taetae98.customview.databinding.ViewLoginButtonBinding
 import com.taetae98.customview.utility.DataBinding
 
-class LoginButtonView(context: Context, attrs: AttributeSet? = null) : MaterialCardView(context, attrs), DataBinding<ViewLoginButtonBinding> {
+
+class LoginButtonView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0) : MaterialCardView(context, attrs, defStyleAttr), DataBinding<ViewLoginButtonBinding> {
     override val binding: ViewLoginButtonBinding by lazy { DataBinding.get(this, R.layout.view_login_button) }
 
     init {
-        context.theme.obtainStyledAttributes(attrs, R.styleable.LoginButtonView, 0, 0).apply {
+        context.theme.obtainStyledAttributes(attrs, R.styleable.LoginButtonView, defStyleAttr, defStyleRes).apply {
             if (isInEditMode) {
                 inflate(context, R.layout.view_login_button, this@LoginButtonView)
                 findViewById<TextView>(R.id.text_view).apply {
@@ -37,6 +38,8 @@ class LoginButtonView(context: Context, attrs: AttributeSet? = null) : MaterialC
                     textColor = getColor(R.styleable.LoginButtonView_textColor, Color.parseColor("#000000"))
                 }
             }
+
+            recycle()
         }
     }
 }
