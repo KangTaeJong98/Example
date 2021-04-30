@@ -18,9 +18,6 @@
 
             <com.taetae98.customview.view.ProgressView
                 android:id="@+id/progress"
-                app:progressBarColor="@color/purple_500"
-                app:progressBarWidth="40dp"
-                app:textSize="30sp"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:layout_width="300dp"
