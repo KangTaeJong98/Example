@@ -5,6 +5,10 @@
         <variable
             name="viewModel"
             type="com.taetae98.oauth.viewmodel.MainActivityViewModel" />
+
+        <variable
+            name="onLogout"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -39,6 +43,11 @@
         <com.google.android.material.textview.MaterialTextView
             android:text="@{viewModel.type}"
             android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="@{onLogout}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

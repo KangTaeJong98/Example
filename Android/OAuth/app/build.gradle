@@ -51,6 +51,9 @@ dependencies {
     // Google OAuth
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
+    // Kakao OAuth
+    implementation "com.kakao.sdk:v2-user:2.5.0"
+
     // People
     implementation 'com.google.apis:google-api-services-people:v1-rev20210419-1.31.0'
 

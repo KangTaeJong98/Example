@@ -5,6 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.Scope
+import com.google.api.services.people.v1.PeopleServiceScopes
 import com.taetae98.oauth.R
 import com.taetae98.oauth.base.BaseFragment
 import com.taetae98.oauth.databinding.FragmentProfileBinding
@@ -18,6 +23,7 @@ class ProfileFragment : BaseFragment(), DataBinding<FragmentProfileBinding> {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         onCreateDataBinding()
+        onCreateOnLogout()
 
         return binding.root
     }
@@ -25,5 +31,24 @@ class ProfileFragment : BaseFragment(), DataBinding<FragmentProfileBinding> {
     private fun onCreateDataBinding() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+    }
+
+    private fun onCreateOnLogout() {
+        binding.setOnLogout {
+            when(viewModel.type) {
+                MainActivityViewModel.GOOGLE -> {
+                    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                            .build()
+
+                    val client = GoogleSignIn.getClient(requireActivity(), gso)
+
+                    client.signOut().addOnCompleteListener {
+                        findNavController().navigateUp()
+                    }
+                }
+            }
+
+            viewModel.reset()
+        }
     }
 }
