@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">OAuth</string>
+    <string name="signin_with_google">Signin with Google</string>
+    <string name="client_id">488093482737-f8cojrmq62q6djqe9uo517onaoi5opdf.apps.googleusercontent.com</string>
+    <string name="client_secret">8OBlCo4nhkB11gjj5aOopUkg</string>
+    <string name="oauth_key">AIzaSyCmoZAKwyf3DARu9wOdueQ6ZiZmSeyPizw</string>
+</resources>
