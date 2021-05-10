@@ -1,6 +1,7 @@
 package com.taetae98.oauth.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.Scope
 import com.google.api.services.people.v1.PeopleServiceScopes
+import com.kakao.sdk.user.UserApiClient
+import com.nhn.android.naverlogin.OAuthLogin
 import com.taetae98.oauth.R
 import com.taetae98.oauth.base.BaseFragment
 import com.taetae98.oauth.databinding.FragmentProfileBinding
@@ -43,12 +46,29 @@ class ProfileFragment : BaseFragment(), DataBinding<FragmentProfileBinding> {
                     val client = GoogleSignIn.getClient(requireActivity(), gso)
 
                     client.signOut().addOnCompleteListener {
+                        viewModel.reset()
                         findNavController().navigateUp()
                     }
                 }
-            }
 
-            viewModel.reset()
+                MainActivityViewModel.KAKAO -> {
+                    UserApiClient.instance.logout { error ->
+                        if (error == null) {
+                            viewModel.reset()
+                            findNavController().navigateUp()
+                        } else {
+                            Log.e("PASS", "Kakao Logout 실패", error)
+                        }
+                    }
+                }
+
+                MainActivityViewModel.NAVER -> {
+                    OAuthLogin.getInstance().logoutAndDeleteToken(requireContext())
+
+                    viewModel.reset()
+                    findNavController().navigateUp()
+                }
+            }
         }
     }
 }

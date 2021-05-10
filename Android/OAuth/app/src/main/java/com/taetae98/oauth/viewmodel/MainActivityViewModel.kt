@@ -11,6 +11,8 @@ class MainActivityViewModel : ViewModel() {
 
     companion object {
         const val GOOGLE = "Google"
+        const val KAKAO = "Kakao"
+        const val NAVER = "Naver"
     }
 
     fun reset() {

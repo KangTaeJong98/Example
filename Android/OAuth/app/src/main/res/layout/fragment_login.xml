@@ -9,6 +9,10 @@
         <variable
             name="onSigninWithKakao"
             type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onSigninWithNaver"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <LinearLayout
@@ -18,17 +22,26 @@
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/google_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:onClick="@{onSigninWithGoogle}" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:background="@drawable/kakao_login_medium_wide"
             android:onClick="@{onSigninWithKakao}"
             app:backgroundTint="@null" />
+
+        <com.google.android.material.button.MaterialButton
+            android:onClick="@{onSigninWithNaver}"
+            android:background="@drawable/naver"
+            app:backgroundTint="@null"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="40dp" />
+
     </LinearLayout>
 </layout>

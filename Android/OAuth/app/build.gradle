@@ -57,6 +57,10 @@ dependencies {
     // People
     implementation 'com.google.apis:google-api-services-people:v1-rev20210419-1.31.0'
 
+    // Naver OAuth
+    implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'

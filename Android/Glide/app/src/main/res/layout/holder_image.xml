@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="imageUri"
+            type="String" />
+    </data>
+
+    <ImageView
+        app:imageUri="@{imageUri}"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</layout>

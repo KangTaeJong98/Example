@@ -6,5 +6,7 @@
     <string name="google_api_key">AIzaSyCmoZAKwyf3DARu9wOdueQ6ZiZmSeyPizw</string>
     
     <string name="kakao_api_key">55d4719397d66ddb0ccf6d644e8ef2d3</string>
-    
+
+    <string name="naver_client_id">J6eItCoktKanTtXKAtOi</string>
+    <string name="naver_client_secret">aZfaHgqVxx</string>
 </resources>
