@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textColor" format="reference|color" />
+    <attr name="icon" format="reference" />
+    <attr name="text" format="reference|string" />
+    <declare-styleable name="LoginButtonView">
+        <attr name="icon" />
+        <attr name="textColor" />
+        <attr name="text" />
+        <attr name="backgroundColor" format="reference|color" />
+    </declare-styleable>
+
+    <attr name="content" format="reference|string" />
+
+    <declare-styleable name="ProgressView">
+        <attr name="maxValue" format="reference|integer" />
+        <attr name="value" format="reference|integer" />
+        <attr name="textSize" format="reference|dimension" />
+        <attr name="textColor" />
+        <attr name="progressBarBackgroundColor" format="reference|color" />
+        <attr name="progressBarColor" format="reference|color" />
+        <attr name="progressBarWidth" format="reference|dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="InformationView">
+        <attr name="icon" />
+        <attr name="title" format="reference|string" />
+        <attr name="content" />
+    </declare-styleable>
+</resources>
