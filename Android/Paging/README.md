@@ -1,4 +1,4 @@
-# RecyclerView 예제
+# Paging 예제
 
 ## ⚡ Features
 * Paging Source : 데이터를 얻는 방법을 정의한다. 로컬 데이터베이스에서 얻거나 서버로붙 받아온다. (https://rkdxowhd98.tistory.com/177)
