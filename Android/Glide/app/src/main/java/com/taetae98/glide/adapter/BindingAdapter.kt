@@ -26,7 +26,6 @@ object BindingAdapter {
                     "User-Agent" to "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Mobile Safari/537.36"
                 )
             }
-                    .updateDiskCacheKey(DiskCacheStrategy.)
         ).override(Target.SIZE_ORIGINAL,Target.SIZE_ORIGINAL).into(view)
     }
 }

@@ -1,4 +1,4 @@
-package com.stay.staytionery.utility
+package com.taetae98.paging.utility
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

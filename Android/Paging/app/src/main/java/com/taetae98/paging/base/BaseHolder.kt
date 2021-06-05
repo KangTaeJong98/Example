@@ -1,4 +1,4 @@
-package com.taetae98.something.base
+package com.taetae98.paging.base
 
 import android.content.Context
 import androidx.databinding.ViewDataBinding
@@ -15,6 +15,6 @@ abstract class BaseHolder<VB: ViewDataBinding, E: Any>(protected val binding: VB
     }
 
     open fun bind(element: E, payload: MutableList<Any>) {
-        bind(element)
+
     }
 }

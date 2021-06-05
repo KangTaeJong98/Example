@@ -1,4 +1,4 @@
-package com.stay.staytionery.base
+package com.taetae98.paging.base
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar

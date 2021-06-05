@@ -1,5 +1,6 @@
 package com.taetae98.coordinatorlayout.fragment
 
+import android.graphics.Color
 import android.util.Log
 import androidx.navigation.fragment.navArgs
 import com.taetae98.coordinatorlayout.GridSpacingItemDecoration

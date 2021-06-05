@@ -1,4 +1,4 @@
-package com.taetae98.something
+package com.taetae98.paging
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

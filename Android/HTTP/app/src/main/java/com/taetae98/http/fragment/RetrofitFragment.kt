@@ -9,9 +9,13 @@ import com.taetae98.http.base.BaseFragment
 import com.taetae98.http.databinding.FragmentRetrofitBinding
 import com.taetae98.http.dto.RequestResult
 import com.taetae98.http.singleton.RetrofitBuilder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.concurrent.thread
 
 class RetrofitFragment : BaseFragment<FragmentRetrofitBinding>(R.layout.fragment_retrofit) {
     private val methods = arrayOf("GET", "POST")
@@ -82,14 +86,14 @@ class RetrofitFragment : BaseFragment<FragmentRetrofitBinding>(R.layout.fragment
 
 //                            동기
 //                            thread {
-//                                val response = RetrofitBuilder.retrofit.getUrlencoded(parameter1, parameter2).execute()
-//                                CoroutineScope(Dispatchers.Main).launch {
-//                                    if (response.isSuccessful) {
-//                                        binding.resultTextView.text = response.body()?.toString()
-//                                    } else {
-//                                        binding.resultTextView.text = response.errorBody()?.toString()
-//                                    }
-//                                }
+                                val response = RetrofitBuilder.retrofit.getUrlencoded(parameter1, parameter2).execute()
+                                CoroutineScope(Dispatchers.IO).launch {
+                                    if (response.isSuccessful) {
+                                        binding.resultTextView.text = response.body()?.toString()
+                                    } else {
+                                        binding.resultTextView.text = response.errorBody()?.toString()
+                                    }
+                                }
 //                            }
                         }
 

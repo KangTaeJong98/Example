@@ -1,4 +1,4 @@
-package com.taetae98.something.base
+package com.taetae98.paging.base
 
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil

@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main_navigation.xml">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_navigation.xml"
+    app:startDestination="@id/mainFragment">
 
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.taetae98.paging.fragment.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_webToonFragment"
+            app:destination="@id/webToonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webToonFragment"
+        android:name="com.taetae98.paging.fragment.WebToonFragment"
+        android:label="WebToonFragment"
+        tools:layout="@layout/fragment_web_toon">
+        <argument
+            android:name="webToonId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_webToonFragment_to_viewerFragment"
+            app:destination="@id/viewerFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_webToonFragment"
+        app:destination="@id/webToonFragment" />
+    <fragment
+        android:id="@+id/viewerFragment"
+        android:name="com.taetae98.paging.fragment.ViewerFragment"
+        android:label="ViewerFragment"
+        tools:layout="@layout/fragment_viewer">
+        <argument android:name="webToonId"
+            app:argType="long" />
+        <argument
+            android:name="episode"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_viewerFragment"
+        app:destination="@id/viewerFragment" />
 </navigation>
