@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation.xml"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.taetae98.notification.fragment.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <argument
+            android:name="title"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="message"
+            android:defaultValue=""
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="navigation://main" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiveFragment"
+        android:name="com.taetae98.notification.fragment.ReceiveFragment"
+        android:label="ReceiveFragment"
+        tools:layout="@layout/fragment_receive">
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </fragment>
+</navigation>
