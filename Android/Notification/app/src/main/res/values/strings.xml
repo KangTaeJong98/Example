@@ -2,5 +2,20 @@
     <string name="app_name">Notification</string>
     <string name="title">Title</string>
     <string name="message">Message</string>
-    <string name="submit">Submit</string>
+    <string name="notify">Notify</string>
+    <string name="normal">Normal</string>
+    <string name="action">Action</string>
+    <string name="delete">Delete</string>
+    <string name="extend">Extend</string>
+    <string name="image">Image</string>
+    <string name="tab_to_open">Tab to open</string>
+    <string name="progress">Progress</string>
+    <string name="n_message">%d Message</string>
+    <string name="group">Group</string>
+    <string name="text">Text</string>
+    <string name="rotation">Rotation</string>
+    <string name="lock">Lock</string>
+    <string name="lock_open">Lock Open</string>
+    <string name="portrait">Portrait</string>
+    <string name="landscape">Landscape</string>
 </resources>

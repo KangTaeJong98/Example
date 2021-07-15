@@ -1,72 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="title"
-            type="String" />
+            name="onImageNotify"
+            type="android.view.View.OnClickListener" />
 
         <variable
-            name="message"
-            type="String" />
-
-        <variable
-            name="onSubmit"
+            name="onProgressNotify"
             type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:title="@string/extend" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/title_input_layout"
-            android:hint="@string/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/title"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <com.google.android.material.textfield.TextInputEditText
-                android:text="@{title}"
                 android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:id="@+id/message_input_layout"
-            android:hint="@string/message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/message"
             app:layout_constraintTop_toBottomOf="@id/title_input_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
             <com.google.android.material.textfield.TextInputEditText
-                android:text="@{message}"
-                android:inputType="textMultiLine"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/submit_button"
-            android:onClick="@{onSubmit}"
-            android:layout_width="match_parent"
+            android:id="@+id/image_notify_button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/submit"
-            android:textAllCaps="false"
+            android:onClick="@{onImageNotify}"
+            android:text="@string/image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/progress_notify_button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/progress_notify_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{onProgressNotify}"
+            android:text="@string/progress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/image_notify_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

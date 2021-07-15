@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageButton
+        android:id="@+id/lock"
+        android:src="@drawable/ic_lock_24"
+        android:contentDescription="@string/lock"
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
+    <ImageButton
+        android:id="@+id/lock_open"
+        android:src="@drawable/ic_lock_open_24"
+        android:contentDescription="@string/lock_open"
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
+    <ImageButton
+        android:id="@+id/portrait"
+        android:src="@drawable/ic_portrait_24"
+        android:contentDescription="@string/portrait"
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
+    <ImageButton
+        android:id="@+id/landscape"
+        android:src="@drawable/ic_landscape_24"
+        android:contentDescription="@string/landscape"
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
+    <ImageButton
+        android:id="@+id/rotation"
+        android:src="@drawable/ic_rotation_24"
+        android:contentDescription="@string/rotation"
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
+</LinearLayout>

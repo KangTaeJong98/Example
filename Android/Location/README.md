@@ -1,4 +1,4 @@
-# LifeCycle 예제
+# Location 예제
 
 ## ⚡ Features
 * 위치서비스 : Android LocationManager를 통해 GPS Provider와 Network Provider를 사용하여 백그라운드, 포그라운드 위치 정보를 얻었습니다. (https://rkdxowhd98.tistory.com/127)

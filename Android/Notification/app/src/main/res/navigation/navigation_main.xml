@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main.xml"
+    app:startDestination="@id/normalFragment">
+
+    <fragment
+        android:id="@+id/normalFragment"
+        android:name="com.taetae98.notification.fragment.NormalFragment"
+        android:label="@string/normal"
+        tools:layout="@layout/fragment_normal"/>
+    <fragment
+        android:id="@+id/actionFragment"
+        android:name="com.taetae98.notification.fragment.ActionFragment"
+        android:label="@string/action"
+        tools:layout="@layout/fragment_action">
+        <argument
+            android:name="message"
+            app:argType="com.taetae98.notification.dto.Message"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/extendFragment"
+        android:name="com.taetae98.notification.fragment.ExtendFragment"
+        android:label="@string/extend"
+        tools:layout="@layout/fragment_extend"/>
+    <fragment
+        android:id="@+id/groupFragment"
+        android:name="com.taetae98.notification.fragment.GroupFragment"
+        android:label="@string/group"
+        tools:layout="@layout/fragment_group"/>
+</navigation>

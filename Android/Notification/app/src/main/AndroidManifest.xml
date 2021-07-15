@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.taetae98.notification">
 
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -11,9 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Notification">
         <receiver
-            android:name=".BasicNotificationEditReceiver"
+            android:name=".receiver.CustomNotificationReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
+        <receiver
+            android:name=".receiver.ActionNotificationReceiver"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name=".activity.MainActivity"
