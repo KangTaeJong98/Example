@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/constraintFragment"
+        android:title="@string/constraint" />
+
+    <item
+        android:id="@+id/guideLineFragment"
+        android:title="@string/guide" />
+
+    <item
+        android:id="@+id/chainFragment"
+        android:title="@string/chain" />
+    <item
+        android:id="@+id/ratioFragment"
+        android:title="@string/ratio" />
+    <item
+        android:id="@+id/placeFragment"
+        android:title="@string/place" />
+</menu>

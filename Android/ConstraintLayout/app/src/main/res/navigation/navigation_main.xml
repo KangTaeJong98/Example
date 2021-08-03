@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_navigation"
+    app:startDestination="@id/constraintFragment">
+
+    <fragment
+        android:id="@+id/constraintFragment"
+        android:name="com.taetae98.constraintlayout.fragment.ConstraintFragment"
+        android:label="@string/constraint"
+        tools:layout="@layout/fragment_constraint"/>
+    <fragment
+        android:id="@+id/guideLineFragment"
+        android:name="com.taetae98.constraintlayout.fragment.GuideLineFragment"
+        android:label="@string/guide"
+        tools:layout="@layout/fragment_guide_line"/>
+    <fragment
+        android:id="@+id/chainFragment"
+        android:name="com.taetae98.constraintlayout.fragment.ChainFragment"
+        android:label="@string/chain"
+        tools:layout="@layout/fragment_chain"/>
+    <fragment
+        android:id="@+id/ratioFragment"
+        android:name="com.taetae98.constraintlayout.fragment.RatioFragment"
+        android:label="@string/ratio"
+        tools:layout="@layout/fragment_ratio"/>
+    <fragment
+        android:id="@+id/placeFragment"
+        android:name="com.taetae98.constraintlayout.fragment.PlaceFragment"
+        android:label="@string/place"
+        tools:layout="@layout/fragment_place"/>
+</navigation>

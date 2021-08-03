@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ConstraintLayout</string>
+    <string name="constraint">Constraint</string>
+    <string name="guide">Guide</string>
+    <string name="chain">Chain</string>
+    <string name="ratio">Ratio</string>
+    <string name="place">Place</string>
+</resources>

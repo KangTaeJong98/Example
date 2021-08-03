@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/mcnc/Desktop/Code/Git/Example/Android/ConstraintLayout/app/src/main/res/layout/activity_main.xml" value="0.23824451410658307" />
+        <entry key="..\:/Users/mcnc/Desktop/Code/Git/Example/Android/ConstraintLayout/app/src/main/res/layout/fragment_chain.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/mcnc/Desktop/Code/Git/Example/Android/ConstraintLayout/app/src/main/res/layout/fragment_constraint.xml" value="0.33" />
+        <entry key="..\:/Users/mcnc/Desktop/Code/Git/Example/Android/ConstraintLayout/app/src/main/res/layout/fragment_guilde_line.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/mcnc/Desktop/Code/Git/Example/Android/ConstraintLayout/app/src/main/res/layout/fragment_place.xml" value="0.33" />
+        <entry key="..\:/Users/mcnc/Desktop/Code/Git/Example/Android/ConstraintLayout/app/src/main/res/layout/fragment_ratio.xml" value="0.22" />
+        <entry key="..\:/Users/mcnc/Desktop/Code/Git/Example/Android/ConstraintLayout/app/src/main/res/menu/menu_navigation_menu.xml" value="0.2046875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
