@@ -22,6 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.constraintlayout.widget.Group
+            android:visibility="@{visible ?? View.VISIBLE}"
+            app:constraint_referenced_ids="textView4,textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <View
             android:id="@+id/view"
             android:layout_width="0dp"
@@ -90,7 +96,6 @@
             android:padding="5dp"
             android:text="Content"
             android:textColor="@color/white"
-            android:visibility="@{visible ?? View.VISIBLE}"
             app:layout_constraintBottom_toTopOf="@id/view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guide_line_1" />
@@ -104,7 +109,6 @@
             android:padding="5dp"
             android:text="Content"
             android:textColor="@color/white"
-            android:visibility="@{visible ?? View.VISIBLE}"
             app:layout_constraintBottom_toTopOf="@id/visible_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view" />
