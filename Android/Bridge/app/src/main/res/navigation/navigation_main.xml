@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation.xml"
+    app:startDestination="@id/webViewFragment">
+
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.taetae98.bridge.fragment.WebViewFragment"
+        android:label="@string/web_view"
+        tools:layout="@layout/fragment_web_view">
+        <action
+            android:id="@+id/action_webViewFragment_to_codeFragment"
+            app:destination="@id/codeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/codeFragment"
+        android:name="com.taetae98.bridge.fragment.CodeFragment"
+        android:label="@string/code"
+        tools:layout="@layout/fragment_code">
+        <argument
+            android:name="code"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
