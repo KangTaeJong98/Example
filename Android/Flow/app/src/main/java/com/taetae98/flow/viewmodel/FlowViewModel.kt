@@ -38,9 +38,9 @@ class FlowViewModel @Inject constructor(
     }
 
     val flowOn = flow {
-        repeat(10) {
+        repeat(3) {
             delay(500L)
-            doLog("Channel Flow Send : $it")
+            doLog("FlowOn Send : $it")
             emit(it)
         }
     }.onEach {

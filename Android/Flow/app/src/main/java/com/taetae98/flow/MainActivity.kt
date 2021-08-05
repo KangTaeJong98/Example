@@ -21,10 +21,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         onCreateOnMap()
         onCreateOnException()
         onCreateOnChannelFlow()
-
-        CoroutineScope(Dispatchers.IO).launch {
-            viewModel.doLog("Single : ${viewModel.data.single()}")
-        }
     }
 
     override fun onCreateViewDataBinding() {
@@ -114,6 +110,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
     private fun onCreateOnChannelFlow() {
         binding.setOnFlowOn {
             CoroutineScope(Dispatchers.IO).launch {
+                viewModel.clearLog()
                 viewModel.doLog("FlowOn Start")
                 viewModel.flowOn.collect {
                     viewModel.doLog("FlowOn :  $it")
