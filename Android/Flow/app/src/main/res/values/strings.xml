@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Flow</string>
+    <string name="collect">Collect</string>
+    <string name="first">First</string>
+    <string name="collect_last">Collect Last</string>
+    <string name="map">Map</string>
+    <string name="filter">Filter</string>
+    <string name="exception">Exception</string>
+    <string name="channel_flow">Channel Flow</string>
+    <string name="flow_on">Flow On</string>
+</resources>

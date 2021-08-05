@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.taetae98.flow.viewmodel.FlowViewModel" />
+
+        <variable
+            name="onCollect"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onFirst"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onCollectLatest"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onMap"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onException"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onFlowOn"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/exception_button">
+            <com.google.android.material.textview.MaterialTextView
+                android:text="@{viewModel.log}"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/exception_button"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Log" />
+        </ScrollView>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/map_button"
+            android:text="@string/map"
+            android:onClick="@{onMap}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/exception_button"
+            app:layout_constraintBottom_toTopOf="@id/first_button"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/exception_button"
+            android:text="@string/exception"
+            android:onClick="@{onException}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/map_button"
+            app:layout_constraintEnd_toStartOf="@id/channel_flow_button"
+            app:layout_constraintBottom_toTopOf="@id/first_button"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/channel_flow_button"
+            android:text="@string/flow_on"
+            android:onClick="@{onFlowOn}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/exception_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/first_button"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/collect_button"
+            android:text="@string/collect"
+            android:onClick="@{onCollect}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/first_button"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/first_button"
+            android:text="@string/first"
+            android:onClick="@{onFirst}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/collect_button"
+            app:layout_constraintEnd_toStartOf="@id/collect_last_button"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/collect_last_button"
+            android:text="@string/collect_last"
+            android:onClick="@{onCollectLatest}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/first_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
