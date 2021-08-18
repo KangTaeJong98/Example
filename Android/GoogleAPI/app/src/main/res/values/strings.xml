@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">GoogleAPI</string>
+    <string name="sign_in">SignIn</string>
+    <string name="map">Map</string>
+    <string name="google_geo_api_key">AIzaSyDUQ0npGBDPXqdHy5bjFSjOEAd1iI5CKnY</string>
+    <string name="google_web_client_id">1085888320564-2f81a7aa500o3jnahgi1s0rhg801djki.apps.googleusercontent.com</string>
+    <string name="google">Google</string>
+    <string name="location_add">장소 추가</string>
+    <string name="title">제목</string>
+    <string name="latitude">위도</string>
+    <string name="longitude">경도</string>
+    <string name="title_required">제목*</string>
+    <string name="latitude_required">위도*</string>
+    <string name="longitude_required">경도*</string>
+    <string name="add">추가</string>
+    <string name="address1">신주소</string>
+    <string name="address2">구주소</string>
+    <string name="description">설명</string>
+    <string name="delete">삭제</string>
+</resources>

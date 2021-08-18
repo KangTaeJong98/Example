@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main.xml"
+    app:startDestination="@id/findFragment">
+
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="com.taetae98.contentprovider.fragment.FindFragment"
+        tools:layout="@layout/fragment_find" >
+        <action
+            android:id="@+id/action_findFragment_to_dataAddFragment"
+            app:destination="@id/dataAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataAddFragment"
+        android:name="com.taetae98.contentprovider.fragment.DataAddFragment"
+        tools:layout="@layout/fragment_data_add" />
+</navigation>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1085888320564",
+    "project_id": "fluid-door-323205",
+    "storage_bucket": "fluid-door-323205.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085888320564:android:d3ebe86f66e9dac7eba661",
+        "android_client_info": {
+          "package_name": "com.taetae98.googleapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085888320564-s53pir1vmb6fsm558i31u50e5go39so0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taetae98.googleapi",
+            "certificate_hash": "56d375c5dfa1a73bf4cf44152765b9a03b07b099"
+          }
+        },
+        {
+          "client_id": "1085888320564-2f81a7aa500o3jnahgi1s0rhg801djki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUQ0npGBDPXqdHy5bjFSjOEAd1iI5CKnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085888320564-2f81a7aa500o3jnahgi1s0rhg801djki.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
