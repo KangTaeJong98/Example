@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/foreground_span"
+            android:text="티스토리 개발일지 Span 예제"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/absolute_size_span"
+            android:text="절대크기 Span 예제"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/relative_size_span"
+            android:text="상대크기 Span 예제"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/click_span"
+            android:text="클릭 Span 예제"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/url_span"
+            android:text="URL Span 예제"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bullet_span"
+            android:text="Bullet Span 예제"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>

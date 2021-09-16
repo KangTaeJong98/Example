@@ -22,7 +22,7 @@ class SignInFragment : BindingFragment<FragmentSignInBinding>(R.layout.fragment_
             }
 
             override fun onFail() {
-
+                findNavController().navigate(SignInFragmentDirections.actionGlobalLocationAddDialog())
             }
         }
     }

@@ -44,4 +44,7 @@
             android:name="place"
             app:argType="com.taetae98.googleapi.dto.Place" />
     </dialog>
+    <action
+        android:id="@+id/action_global_locationAddDialog"
+        app:destination="@id/locationAddDialog" />
 </navigation>
