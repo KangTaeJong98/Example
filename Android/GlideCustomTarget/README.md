@@ -3,13 +3,10 @@
 ## ⚡ Features
 * Glide : Android에서 Image를 빠르게 Loading하기 위한 라이브러리다. 인터넷에 있는 이미지, Resource, Uri등 다양한 형식을 지원한다. (https://rkdxowhd98.tistory.com/63)
 
-* 에러처리 : Image를 Loading할 때 Error가 발생하면 대체로 보여줄 이미지를 설정할 수 있다. (https://rkdxowhd98.tistory.com/63)
+* 헤더 : Image를 Request할 때 HTTP Header를 추가할 수 있다. (https://rkdxowhd98.tistory.com/208)
 
-* GIF : GIF 이미지를 Loading할 수 있다. (https://rkdxowhd98.tistory.com/63)
+* CustomTarget : Target을 Extend하여 새롭게 정의할 수 있다. (https://rkdxowhd98.tistory.com/208)
 
-* 캐쉬 : Image를 캐쉬처리하여 Loading을 빠르게 할 수 있다. (https://rkdxowhd98.tistory.com/63)
-
-* HTTP Header : 인터넷에 있는 이미지를 사용할 때 Header를 추가할 수 있다. (https://rkdxowhd98.tistory.com/63)
 
 ## 😊 Introduction
 ### MainFragment
