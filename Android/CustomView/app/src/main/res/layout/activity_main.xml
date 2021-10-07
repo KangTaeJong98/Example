@@ -11,57 +11,62 @@
         android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
+        <HorizontalScrollView
+            android:fillViewport="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <com.taetae98.customview.view.ProgressView
-                android:id="@+id/progress"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                tools:value="10"/>
-
-
-            <com.taetae98.customview.view.OverlapLayout
-                android:id="@+id/overlap"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/dog"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/cat"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content" />
-                <ImageView
-                    android:src="@drawable/bird"
-                    android:adjustViewBounds="true"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content" />
-            </com.taetae98.customview.view.OverlapLayout>
 
-            <com.taetae98.customview.view.LoginButtonView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/white"
-                app:icon="@drawable/ic_google"
-                app:text="@string/google" />
+                <com.taetae98.customview.view.ProgressView
+                    android:id="@+id/progress"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    tools:value="10"/>
 
-            <com.taetae98.customview.view.LoginButtonView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="#FFEB00"
-                app:icon="@drawable/ic_kakao"
-                app:text="@string/kakao"
-                app:textColor="#3C1E1E" />
-        </LinearLayout>
+
+                <com.taetae98.customview.view.OverlapLayout
+                    android:id="@+id/overlap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/dog"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/cat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@drawable/bird"
+                        android:adjustViewBounds="true"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content" />
+                </com.taetae98.customview.view.OverlapLayout>
+
+                <com.taetae98.customview.view.LoginButtonView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:icon="@drawable/ic_google"
+                    app:text="@string/google" />
+
+                <com.taetae98.customview.view.LoginButtonView
+                    android:layout_width="1000dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardBackgroundColor="#FFEB00"
+                    app:icon="@drawable/ic_kakao"
+                    app:text="@string/kakao"
+                    app:textColor="#3C1E1E" />
+            </LinearLayout>
+        </HorizontalScrollView>
     </ScrollView>
 </layout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="log"
+            type="String" />
+        <variable
+            name="onActivity"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="onDialog"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="onNotification"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="onClear"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <com.google.android.material.textview.MaterialTextView
+            android:text="@{log ?? ``}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/button_layout"/>
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/activity_button"
+                android:onClickListener="@{onActivity}"
+                android:text="Activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/dialog_button"
+                android:onClickListener="@{onDialog}"
+                android:text="Dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/notification_button"
+                android:onClickListener="@{onNotification}"
+                android:text="Notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear_button"
+                android:onClickListener="@{onClear}"
+                android:text="clear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
