@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_covid_widget_configure"
+    app:startDestination="@id/covidWidgetConfigureFragment">
+
+    <fragment
+        android:id="@+id/covidWidgetConfigureFragment"
+        android:name="com.taetae98.widget.ui.fragment.CovidWidgetConfigureFragment"
+        tools:layout="@layout/fragment_covid_widget_configure" >
+        <argument
+            android:name="appWidgetId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_covidWidgetConfigureFragment_to_colorPickerDialog"
+            app:destination="@id/colorPickerDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/colorPickerDialog"
+        android:name="com.taetae98.widget.ui.dialog.ColorPickerDialog"
+        tools:layout="@layout/dialog_color_picker" >
+        <argument
+            android:name="key"
+            app:argType="string" />
+        <argument
+            android:name="color"
+            app:argType="integer" />
+    </dialog>
+</navigation>

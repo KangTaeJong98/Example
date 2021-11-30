@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Widget.Shape.Oval" parent="Theme.Widget">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Theme.Widget.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:titleTextColor">?attr/colorOnPrimary</item>
+    </style>
+</resources>
